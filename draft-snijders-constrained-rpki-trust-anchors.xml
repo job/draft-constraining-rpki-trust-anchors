@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE rfc [
+ <!ENTITY nbsp  "&#160;">
+ <!ENTITY zwsp "&#8203;">
+ <!ENTITY nbhy "&#8209;">
+ <!ENTITY wj   "&#8288;">
+]>
+
+<?rfc sortrefs="yes"?>
+<?rfc subcompact="no"?>
+<?rfc symrefs="yes"?>
+<?rfc toc="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude"
+     category="info"
+     docName="draft-snijders-constrained-rpki-trust-anchors-00"
+     ipr="trust200902"
+     xml:lang="en"
+     sortRefs="true"
+     submissionType="independent"
+     version="3">
+
+  <front>
+
+    <title abbrev="Constrained Trust Anchors">
+      Locally Constrained RPKI Trust Anchors
+    </title>
+
+    <seriesInfo name="Internet-Draft" value="draft-snijders-constrained-rpki-trust-anchors"/>
+
+    <author fullname="Job Snijders" initials="J." surname="Snijders">
+      <organization>OpenBSD</organization>
+      <address>
+        <postal>
+          <street/>
+          <code/>
+          <city>Amsterdam</city>
+          <country>NL</country>
+        </postal>
+        <email>job@openbsd.org</email>
+      </address>
+    </author>
+
+    <author fullname="Theo Buehler" initials="T." surname="Buehler">
+      <organization>OpenBSD</organization>
+      <address>
+        <postal>
+          <street/>
+          <code/>
+          <city/>
+          <country>CH</country>
+        </postal>
+        <email>tb@openbsd.org</email>
+      </address>
+    </author>
+
+    <date />
+
+    <area>ops</area>
+
+    <keyword>RPKI</keyword>
+    <keyword>security</keyword>
+    <keyword>cryptography</keyword>
+    <keyword>X.509</keyword>
+
+    <abstract>
+      <t>
+        This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on Signed Objects subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
+        The capacity to effectively constrain a Trust Anchor operator's abilities to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="intro">
+      <name>Introduction</name>
+      <t>
+         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
+         The capacity to effectively constrain a Trust Anchor operator's abilities to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
+      </t>
+
+      <t>
+        This document is intended to address user (meaning, Network Operator and Relying Party) needs and concerns, and was authored to benefit users and providers of RPKI services by providing a common body of knowledge to be communicated within the global Internet routing system community.
+      </t>
+
+      <section anchor="definitions">
+        <name>Definitions</name>
+        <dl>
+          <dt>Assumed Trust</dt>
+          <dd> </dd>
+          <dt>Derived Trust</dt>
+          <dd> </dd>
+          <dt>Constraints</dt>
+          <dd>A list of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges.</dd>
+          <dt>Constrained Derived Trust</dt>
+          <dd> </dd>
+        </dl>
+      </section>
+    </section>
+
+    <section anchor="validation">
+      <name>Validation of EE</name>
+      <t>
+       ...
+      </t>
+    </section>
+
+    <section>
+      <name>Operational Considerations</name>
+      <t>
+        
+      </t>
+    </section>
+
+    <section anchor="security">
+      <name>Security Considerations</name>
+      <t>
+        ...
+      </t>
+    </section>
+
+  </middle>
+
+  <back>
+    <references>
+      <name>References</name>
+      <references>
+        <name>Normative References</name>
+
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5652.xml"/>
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6481.xml"/>
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6487.xml"/>
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6488.xml"/>
+          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      </references>
+
+      <references>
+        <name>Informative References</name>
+
+       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4387.xml"/>
+       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml"/>
+       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6268.xml"/>
+       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6811.xml"/>
+       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7454.xml"/>
+      </references>
+    </references>
+
+    <section anchor="constraints">
+      <name>Example contraints listing</name>
+      <t>
+        Below is an example list of constraints related to AFRINIC-managed Internet Number Resources.
+        By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the rpki-client implementation will consider all EE certificates invalid which carry INRs not fully contained within the INRs listed in the <strong>afrinic.constraints</strong> file.
+      </t>
+
+      <sourcecode type="text" src="afrinic.constraints"/>
+
+    </section>
+
+  </back>
+
+</rfc>
