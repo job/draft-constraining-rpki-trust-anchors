@@ -84,6 +84,10 @@
       </t>
 
       <t>
+        It is important to note that each Relying Party makes its Trust Anchor inclusion decisions independently, on its own timelines, based on its own inclusion criteria; and that imposed constraints (if any) are a matter of local configuration.
+      </t>
+
+      <t>
         This document is intended to address user (meaning, Network Operator and Relying Party) needs and concerns, and was authored to benefit users and providers of RPKI services by providing a common body of knowledge to be communicated within the global Internet routing system community.
       </t>
 
