@@ -79,12 +79,12 @@
     <section anchor="intro">
       <name>Introduction</name>
       <t>
-         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
+         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in the <xref target="OpenBSD"/> <xref target="rpki-client"/> validator.
          The capacity to effectively constrain a Trust Anchor operator's abilities to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
       </t>
 
       <t>
-        It is important to note that each Relying Party makes its Trust Anchor inclusion decisions independently, on its own timelines, based on its own inclusion criteria; and that imposed constraints (if any) are a matter of local configuration.
+        It is important to emphasize that each Relying Party makes its Trust Anchor inclusion decisions independently, on its own timelines, based on its own inclusion criteria; and that imposed constraints (if any) are a matter of local configuration.
       </t>
 
       <t>
@@ -148,6 +148,26 @@
       <name>References</name>
       <references>
         <name>Informative References</name>
+
+        <reference anchor="OpenBSD" target="https://www.openbsd.org/">
+          <front>
+            <title>The OpenBSD Project</title>
+            <author fullname="Theo de Raadt"/>
+            <date year="2023" />
+          </front>
+        </reference>
+
+        <reference anchor="rpki-client" target="https://www.rpki-client.org/">
+          <front>
+            <title>rpki-client</title>
+            <author fullname="Claudio Jeker"/>
+            <author fullname="Job Snijders"/>
+            <author fullname="Kristaps Dzonsons"/>
+            <author fullname="Theo Buehler"/>
+            <date month="July" year="2023" />
+          </front>
+        </reference>
+
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6480.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6481.xml"/>
