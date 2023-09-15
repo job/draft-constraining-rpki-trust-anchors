@@ -91,15 +91,29 @@
         <name>Definitions</name>
         <dl>
           <dt>Assumed Trust</dt>
-          <dd> </dd>
+          <dd>
+            In the RPKI hierarchical structure, a Trust Anchor is an authority for which trust is assumed and not derived.
+            Assuming trust means that violation of that trust is out-of-scope for the threat model.
+          </dd>
           <dt>Derived Trust</dt>
-          <dd> </dd>
+          <dd>
+            Derived Trust can be automatically and securely computed with subjective logic.
+            In the context of the RPKI, trust is derived according to the rules for validation of RPKI Certificates and Signed Objects.
+          </dd>
           <dt>Constraints</dt>
-          <dd>A list of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges.</dd>
-          <dt>Constrained Derived Trust</dt>
-          <dd> </dd>
+          <dd>
+            The locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
+          </dd>
         </dl>
       </section>
+
+      <section anchor="reading">
+        <name>Required Reading</name>
+        <t>
+          Readers should be familiar with the RPKI, the RPKI repository structure, and the various RPKI objects, uses, and interpretations described in the following: <xref target="RFC3779"/>, <xref target="RFC6480"/>, <xref target="RFC6481"/>, <xref target="RFC6487"/>, and <xref target="RFC6488"/>.
+        </t>
+      </section>
+
     </section>
 
     <section anchor="validation">
@@ -112,7 +126,7 @@
     <section>
       <name>Operational Considerations</name>
       <t>
-        
+
       </t>
     </section>
 
@@ -129,25 +143,12 @@
     <references>
       <name>References</name>
       <references>
-        <name>Normative References</name>
-
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5652.xml"/>
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6481.xml"/>
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6487.xml"/>
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6488.xml"/>
-          <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
-      </references>
-
-      <references>
         <name>Informative References</name>
-
-       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4387.xml"/>
-       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml"/>
-       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6268.xml"/>
-       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6811.xml"/>
-       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7454.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6480.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6481.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6487.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6488.xml"/>
       </references>
     </references>
 
