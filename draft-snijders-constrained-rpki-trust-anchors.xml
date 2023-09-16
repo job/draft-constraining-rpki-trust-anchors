@@ -69,7 +69,7 @@
 
     <abstract>
       <t>
-        This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on Signed Objects subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
+        This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
         The capacity to effectively constrain a Trust Anchor operator's abilities to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
       </t>
     </abstract>
