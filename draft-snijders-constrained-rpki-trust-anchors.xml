@@ -38,7 +38,7 @@
         <postal>
           <street/>
           <code/>
-          <city>Amsterdam</city>
+          <city/>
           <country>NL</country>
         </postal>
         <email>job@openbsd.org</email>
