@@ -148,7 +148,7 @@
     <section anchor="security">
       <name>Security Considerations</name>
       <t>
-        Trade-off between being at risk or enjoying today's benefits and ROAs
+        Trade-off between being at risk <xref target="risks1"/> or enjoying today's benefits and ROAs
       </t>
     </section>
 
@@ -190,6 +190,17 @@
             <author fullname="Noah Maina"/>
             <author fullname="Adeola A. P. Aina"/>
             <date month="February" year="2022"/>
+          </front>
+        </reference>
+
+        <reference anchor="risks1" target="https://www.cs.bu.edu/~goldbe/papers/hotRPKI.pdf">
+          <front>
+            <title>On the Risk of Misbehaving RPKI Authorities</title>
+            <author fullname="Danny Cooper"/>
+            <author fullname="Ethan Heilman"/>
+            <author fullname="Kyle Brogle"/>
+            <author fullname="Leonid Reyzin"/>
+            <author fullname="Sharon Goldberg"/>
           </front>
         </reference>
 
