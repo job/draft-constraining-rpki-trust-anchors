@@ -123,9 +123,10 @@
     <section>
       <name>Constraints versus Pliability</name> <!-- not a good title -->
       <t>
-        Four RIRs transfer space between them
-        <!-- Add citation about 0.0.0.0/0 considerations -->
-        AFRINIC has not ratified &amp; implemented transfer policy <!-- cite -->
+        To help mitigate the risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/> all five Regional Internet Registries list 'all-resources' (0.0.0.0/0 + ::/0 + 0-4294967295) as subordinate on their respective Trust Anchor certificates.
+        Transcient registry inconsistencies only occur when resources are transferred from one RIR to another.
+        Only four out of five RIRs transfer resources between themselves.
+        AFRINIC has not ratified &amp; implemented transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
       </t>
     </section>
 
@@ -180,6 +181,16 @@
 
         <!-- anchor I-D.rir-rpki-allres-ta-app-statement -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.rir-rpki-allres-ta-app-statement.xml"/>
+
+        <!-- -->
+        <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/policy/proposals/2020-gen-006-d3">
+          <front>
+            <title>AFRINIC Number Resources Transfer Policy (Draft-3)</title>
+            <author fullname="Gregoire Olaotan Ehoumi"/>
+            <author fullname="Noah Maina"/>
+            <author fullname="Adeola A. P. Aina"/>
+          </front>
+        </reference>
 
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6480.xml"/>
