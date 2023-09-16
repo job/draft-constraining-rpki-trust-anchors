@@ -126,7 +126,7 @@
         To help mitigate the risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/> all five Regional Internet Registries list 'all-resources' (0.0.0.0/0 + ::/0 + 0-4294967295) as subordinate on their respective Trust Anchor certificates.
         Transcient registry inconsistencies only occur when resources are transferred from one RIR to another.
         Only four out of five RIRs transfer resources between themselves.
-        AFRINIC has not ratified &amp; implemented transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
+        AFRINIC has not yet ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and documented such a proposal will take 12 months to be implemented after ratification.
       </t>
     </section>
 
@@ -189,6 +189,7 @@
             <author fullname="Gregoire Olaotan Ehoumi"/>
             <author fullname="Noah Maina"/>
             <author fullname="Adeola A. P. Aina"/>
+            <date month="August" year="2022"/>
           </front>
         </reference>
 
