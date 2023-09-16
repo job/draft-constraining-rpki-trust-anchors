@@ -121,7 +121,7 @@
     </section>
 
     <section anchor="validation">
-      <name>Validation of EE</name>
+      <name>Validation of End-Entity Certificates</name>
       <t>
        ...
       </t>
@@ -180,7 +180,7 @@
       <name>Example contraints listing</name>
       <t>
         Below is an example list of constraints related to AFRINIC-managed Internet Number Resources.
-        By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the rpki-client implementation will consider all EE certificates invalid which carry INRs not fully contained within the INRs listed in the <strong>afrinic.constraints</strong> file.
+        By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the rpki-client implementation will consider all End-Entity certificates invalid which carry INRs not fully contained within the INRs listed in the <strong>afrinic.constraints</strong> file.
       </t>
 
       <sourcecode type="text" src="afrinic.constraints"/>
