@@ -120,7 +120,16 @@
 
     </section>
 
-    <section anchor="validation">
+    <section>
+      <name>Constraints versus Pliability</name> <!-- not a good title -->
+      <t>
+        Four RIRs transfer space between them
+        <!-- Add citation about 0.0.0.0/0 considerations -->
+        AFRINIC has not ratified &amp; implemented transfer policy <!-- cite -->
+      </t>
+    </section>
+
+    <section anchor="validation"> <!-- how to look up the EE certs RFC3779 against the list of constraints, longest prefix matching -->
       <name>Validation of End-Entity Certificates</name>
       <t>
        ...
@@ -130,14 +139,15 @@
     <section>
       <name>Operational Considerations</name>
       <t>
-
+        gotta make sure list of constraints is up to date
+        periodically review
       </t>
     </section>
 
     <section anchor="security">
       <name>Security Considerations</name>
       <t>
-        ...
+        Trade-off between being at risk or enjoying today's benefits and ROAs
       </t>
     </section>
 
