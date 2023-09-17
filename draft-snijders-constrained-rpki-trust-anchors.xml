@@ -121,17 +121,24 @@
     </section>
 
     <section>
-      <name>Trust Anchor over-claiming</name>
+      <name>Considerations on Trust Anchor over-claiming</name>
       <t>
-        All five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0 + ::/0 + 0-4294967295) as subordinate on their Trust Anchor certificates to reduce the risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/>.
-        It is important to note that the aforementioned transcient registry inconsistencies <strong>only</strong> can occur when resources are transferred from one RIR to another.
+        Currently, all five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0, ::/0, and AS 0-4294967295) as subordinate on their Trust Anchor certificates in order to reduce some potential for risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/>.
+        Such 'all-resources' listings demonstrates that in the course of normal operations, Trust Anchors may claim authority for INRs outside their current resource holdings.
       </t>
       <t>
-        However, only four out of five RIRs are able to transfer resources between themselves.
-        AFRINIC has not yet ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and also in the draft policy proposal indicated a transfer policy will take 12 months to be implemented after ratification.
+        Transient registry inconsistencies might occur when resources are transferred from one RIR to another.
+        Of note is that the ability to transfer resources between registries is not universally available: this ability depends on the implementation of registry-specific consensus-driven policy development reciprocated by other registries.
+        Absent a registry's ability to execute inter-registry transfers, the set of holdings is a static list of resources.
+        Therefor, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; despite the Trust Anchor certificate listing 'all-resources' as subordinate.
       </t>
       <t>
-        Therefor, knowing AFRINIC's current holdings and knowing this set of holdings will not change for the forseeable future; following the principle of least privilege operators can apply a restricted-service operating mode towards what otherwise would be an unbounded authority.
+        Following the information security principle of least privilege <xref target="privsep"/>, constraining a given Trust Anchor's capability strictly to what relates to the their respective current INR holdings provides additional protection for all stakeholders.
+      </t>
+      <t>
+        The principle of constraining Trust Anchors can be applied to privately operated RPKI testbeds, but also to publicly-trusted registries.
+        For example, AFRINIC has not ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and the policy proposal indicates that a transfer policy will take 12 months to be implemented after ratification.
+        Therefor, knowing AFRINIC's current holdings and knowing this set of holdings will not change for the forseeable future; following the principle of least privilege, operators can apply a restricted-service operating mode towards what otherwise would be an unbounded authority.
       </t>
     </section>
 
@@ -195,6 +202,13 @@
             <author fullname="Noah Maina"/>
             <author fullname="Adeola A. P. Aina"/>
             <date month="February" year="2022"/>
+          </front>
+        </reference>
+
+        <reference anchor="privsep" target="https://sha256.net/privsep.html">
+          <front>
+            <title>Privilege drop, privilege separation, and restricted-service operating mode in OpenBSD</title>
+            <author fullname="Florian Obser"/>
           </front>
         </reference>
 
