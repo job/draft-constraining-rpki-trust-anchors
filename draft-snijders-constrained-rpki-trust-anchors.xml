@@ -138,7 +138,7 @@
       <t>
         The principle of constraining Trust Anchors can be applied to privately operated RPKI testbeds, but also to publicly-trusted registries.
         For example, AFRINIC has not ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and the policy proposal indicates that a transfer policy will take 12 months to be implemented after ratification.
-        Therefor, knowing AFRINIC's current holdings and knowing this set of holdings will not change for the forseeable future; following the principle of least privilege, operators can apply a restricted-service operating mode towards what otherwise would be an unbounded authority.
+        Therefor, knowing AFRINIC's current holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
       </t>
     </section>
 
