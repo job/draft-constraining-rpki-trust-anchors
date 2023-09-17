@@ -121,12 +121,17 @@
     </section>
 
     <section>
-      <name>Constraints versus Pliability</name> <!-- not a good title -->
+      <name>Trust Anchor over-claiming</name>
       <t>
-        To help mitigate the risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/> all five Regional Internet Registries list 'all-resources' (0.0.0.0/0 + ::/0 + 0-4294967295) as subordinate on their respective Trust Anchor certificates.
-        Transcient registry inconsistencies only occur when resources are transferred from one RIR to another.
-        Only four out of five RIRs transfer resources between themselves.
-        AFRINIC has not yet ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and documented such a proposal will take 12 months to be implemented after ratification.
+        All five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0 + ::/0 + 0-4294967295) as subordinate on their Trust Anchor certificates to reduce the risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/>.
+        It is important to note that the aforementioned transcient registry inconsistencies <strong>only</strong> can occur when resources are transferred from one RIR to another.
+      </t>
+      <t>
+        However, only four out of five RIRs are able to transfer resources between themselves.
+        AFRINIC has not yet ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and also in the draft policy proposal indicated a transfer policy will take 12 months to be implemented after ratification.
+      </t>
+      <t>
+        Therefor, knowing AFRINIC's current holdings and knowing this set of holdings will not change for the forseeable future; following the principle of least privilege operators can apply a restricted-service operating mode towards what otherwise would be an unbounded authority.
       </t>
     </section>
 
