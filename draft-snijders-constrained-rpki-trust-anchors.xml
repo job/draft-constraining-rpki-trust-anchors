@@ -133,12 +133,12 @@
         Therefor, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; despite the Trust Anchor certificate listing 'all-resources' as subordinate.
       </t>
       <t>
-        Following the information security principle of least privilege <xref target="privsep"/>, constraining a given Trust Anchor's capability strictly to what relates to the their respective current INR holdings provides additional protection for all stakeholders.
+        Following the commonly deployed information security principle of <xref target="privsep">least privilage</xref>, constraining a given Trust Anchor's capability strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction to all stakeholders involved.
       </t>
       <t>
         The principle of constraining Trust Anchors can be applied to privately operated RPKI testbeds, but also to publicly-trusted registries.
-        For example, AFRINIC has not yet ratified a transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and this policy proposal indicates that implementation is expected to 12 months (after ratification).
-        Therefor, knowing AFRINIC's current holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
+        For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and this policy proposal indicates that implementation is expected to take 12 months after ratification.
+        Therefor, knowing AFRINIC's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
       </t>
     </section>
 
