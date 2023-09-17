@@ -143,7 +143,7 @@
     </section>
 
     <section anchor="validation"> <!-- how to look up the EE certs RFC3779 against the list of constraints, longest prefix matching -->
-      <name>Validation of End-Entity Certificates</name>
+      <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
        ...
       </t>
@@ -175,7 +175,7 @@
         <reference anchor="OpenBSD" target="https://www.openbsd.org/">
           <front>
             <title>The OpenBSD Project</title>
-            <author fullname="Theo de Raadt"/>
+            <author initials="T" surname="de Raadt" fullname="Theo de Raadt"/>
             <date year="2023" />
           </front>
         </reference>
@@ -235,7 +235,7 @@
       <name>Example contraints listing</name>
       <t>
         Below is an example list of constraints related to AFRINIC-managed Internet Number Resources.
-        By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the rpki-client implementation will consider all End-Entity certificates invalid which carry INRs not fully contained within the INRs listed in the <strong>afrinic.constraints</strong> file.
+        By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list INRs not fully contained within the INRs listed in the <strong>afrinic.constraints</strong> file.
       </t>
 
       <sourcecode type="text" src="afrinic.constraints"/>
