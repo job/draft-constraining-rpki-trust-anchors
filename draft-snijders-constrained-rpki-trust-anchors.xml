@@ -26,8 +26,8 @@
 
   <front>
 
-    <title abbrev="Constrained Trust Anchors">
-      Locally Constrained RPKI Trust Anchors
+    <title abbrev="Constraining RPKI Trust Anchors">
+      Constraining RPKI Trust Anchors
     </title>
 
     <seriesInfo name="Internet-Draft" value="draft-snijders-constrained-rpki-trust-anchors"/>
@@ -70,7 +70,7 @@
     <abstract>
       <t>
         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relaying Parties (RPs) to impose locally configured constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
-        The capability to effectively constrain a Trust Anchor operator's abilities to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
+        The capability to effectively constrain a Trust Anchor operator's signing authority to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
       </t>
     </abstract>
   </front>
@@ -130,10 +130,10 @@
         Transient registry inconsistencies might occur when resources are transferred from one RIR to another.
         Of note is that the ability to transfer resources between registries is not universally available: this ability depends on the implementation of registry-specific consensus-driven policy development reciprocated by other registries.
         Absent a registry's ability to execute inter-registry transfers, the set of holdings is a static list of resources.
-        Therefor, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; despite the Trust Anchor certificate listing 'all-resources' as subordinate.
+        Therefor, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
       </t>
       <t>
-        Following the commonly deployed information security principle of <xref target="privsep">least privilage</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction to all stakeholders involved.
+        Following the widely deployed information security principle of <xref target="priv">least privilage</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction to all stakeholders involved.
       </t>
       <t>
         The principle of constraining Trust Anchors can be applied to privately operated RPKI testbeds, but also to publicly-trusted registries.
@@ -205,7 +205,7 @@
           </front>
         </reference>
 
-        <reference anchor="privsep" target="https://sha256.net/privsep.html">
+        <reference anchor="priv" target="https://sha256.net/privsep.html">
           <front>
             <title>Privilege drop, privilege separation, and restricted-service operating mode in OpenBSD</title>
             <author fullname="Florian Obser"/>
