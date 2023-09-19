@@ -36,9 +36,6 @@
       <organization>OpenBSD</organization>
       <address>
         <postal>
-          <street/>
-          <code/>
-          <city/>
           <country>NL</country>
         </postal>
         <email>job@openbsd.org</email>
@@ -49,9 +46,6 @@
       <organization>OpenBSD</organization>
       <address>
         <postal>
-          <street/>
-          <code/>
-          <city/>
           <country>CH</country>
         </postal>
         <email>tb@openbsd.org</email>
@@ -124,10 +118,10 @@
       <name>Considerations on Trust Anchor over-claiming</name>
       <t>
         Currently, all five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0, ::/0, and AS 0-4294967295) as subordinate on their Trust Anchor certificates in order to reduce some potential for risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/>.
-        Such 'all-resources' listings demonstrates that in the course of normal operations, Trust Anchors may claim authority for INRs outside their current resource holdings.
+        Such 'all-resources' listings demonstrate that - in the course of normal operations - Trust Anchors may claim authority for INRs outside their current resource holdings.
       </t>
       <t>
-        Transient registry inconsistencies might occur when resources are transferred from one RIR to another.
+        A primary reason for transient registry inconsistencies to potentially occur is when resources are transferred from one registry to another.
         Of note is that the ability to transfer resources between registries is not universally available: this ability depends on the implementation of registry-specific consensus-driven policy development reciprocated by other registries.
         Absent a registry's ability to execute inter-registry transfers, the set of holdings is a static list of resources.
         Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
@@ -145,6 +139,7 @@
     <section anchor="validation"> <!-- how to look up the EE certs RFC3779 against the list of constraints, longest prefix matching -->
       <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
+       TBD..
        ...
       </t>
     </section>
@@ -152,8 +147,9 @@
     <section>
       <name>Operational Considerations</name>
       <t>
-        gotta make sure list of constraints is up to date
-        periodically review
+        TBD...
+        * gotta make sure list of constraints is up to date
+        * periodically review
       </t>
     </section>
 
