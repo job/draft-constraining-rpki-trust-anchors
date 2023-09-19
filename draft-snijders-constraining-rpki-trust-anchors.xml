@@ -114,7 +114,7 @@
 
     </section>
 
-    <section>
+    <section anchor="overclaim">
       <name>Considerations on Trust Anchor over-claiming</name>
       <t>
         Currently, all five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0, ::/0, and AS 0-4294967295) as subordinate on their Trust Anchor certificates in order to reduce some potential for risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/>.
@@ -134,27 +134,39 @@
       </t>
       <t>
         Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
-        The principle of constraining Trust Anchors might be useful when working with RPKI testbeds <xref target="OTE"/>, but also in dealings with publicly-trusted registries.
+        The principle of constraining Trust Anchors might be useful when for example working with RPKI testbeds <xref target="OTE"/>, but also in dealings with publicly-trusted registries.
       </t>
     </section>
 
-    <section anchor="validation"> <!-- how to look up the EE certs RFC3779 against the list of constraints, longest prefix matching -->
+    <section anchor="constraining"> <!-- how to look up the EE certs RFC3779 against the list of constraints, longest prefix matching -->
       <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
-       TBD..
-       ...
+        As noted in <xref target="overclaim"/>, RPKI CA certificates are expected to overclaim in the course of normal operations.
+        However, applying a customized version of the certification path validation algorithm to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured constraints would not be a trivial task.
+        Instead, a simpler alternative approach operating on EE certificates is proposed.
+      </t>
+      <t>
+        To constrain a Trust Anchor, the IP address and AS number resources listed in the EE certificate's <xref target="RFC3779"/> extensions MUST be fully contained within the locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
+        If the EE certificate's listed resources are not fully contained within the constraints, the RP should consider the EE certificate invalid.
+      </t>
+      <t>
+        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions, such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
+        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements) like Ghostbusters records <xref target="RFC6493"/> and Manifests <xref target="RFC9286"/>.
       </t>
     </section>
 
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
-        For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and this policy proposal indicates that implementation is expected to take 12 months after ratification.
+        When assessing the feasability of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important take note of possible future events which might impact the degree of churn in the registry's holdings.
+      </t>
+      <t>
+        For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and the policy proposal at hand indicates implementation is expected to take 12 months after ratification.
         IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="recovered"/> in recent times, and Autonomous System Number allocations are also fairly infrequent <xref target="asns"/>.
-
-        TBD...
-        * gotta make sure list of constraints is up to date
-        * periodically review
+        The aforementioned observations suggest there is a lot of runway to manage and distribute constraints in a pragmatic manner.
+      </t>
+      <t>
+        Maintainers of constraint lists disseminated as part of an operating system or third-party software package release process would do well to assume a six month delay for users to update.
       </t>
     </section>
 
@@ -194,6 +206,15 @@
 
         <!-- anchor I-D.rir-rpki-allres-ta-app-statement -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.rir-rpki-allres-ta-app-statement.xml"/>
+
+        <!-- anchor I-D.ietf-sidrops-rfc6482bis -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-rfc6482bis.xml"/>
+
+        <!-- anchor I-D.ietf-sidrops-aspa-profile -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-aspa-profile.xml"/>
+
+        <!-- anchor I-D.ietf-opsawg-9092-update -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-opsawg-9092-update.xml"/>
 
         <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/policy/proposals/2020-gen-006-d3">
           <front>
@@ -252,6 +273,10 @@
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6481.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6487.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6488.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6493.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8209.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9286.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9323.xml"/>
       </references>
     </references>
 
