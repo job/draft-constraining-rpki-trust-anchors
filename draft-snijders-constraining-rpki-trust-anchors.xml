@@ -127,7 +127,7 @@
         Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
       </t>
       <t>
-        Following the widely deployed information security principle of <xref target="priv">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction to all stakeholders involved.
+        Following the widely deployed information security principle of <xref target="priv">least privilage</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
       </t>
       <t>
         The principle of constraining Trust Anchors can be applied to privately operated RPKI testbeds, but also to publicly-trusted registries.
