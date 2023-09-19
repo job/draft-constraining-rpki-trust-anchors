@@ -1,4 +1,4 @@
-NAME=draft-snijders-constrained-rpki-trust-anchors
+NAME=draft-snijders-constraining-rpki-trust-anchors
 
 .PHONY: all
 all: drafts

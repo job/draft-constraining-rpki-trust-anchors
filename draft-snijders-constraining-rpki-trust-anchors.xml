@@ -17,7 +17,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="info"
-     docName="draft-snijders-constrained-rpki-trust-anchors-00"
+     docName="draft-snijders-constraining-rpki-trust-anchors-00"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
@@ -30,7 +30,7 @@
       Constraining RPKI Trust Anchors
     </title>
 
-    <seriesInfo name="Internet-Draft" value="draft-snijders-constrained-rpki-trust-anchors"/>
+    <seriesInfo name="Internet-Draft" value="draft-snijders-constraining-rpki-trust-anchors"/>
 
     <author fullname="Job Snijders" initials="J." surname="Snijders">
       <organization>OpenBSD</organization>
