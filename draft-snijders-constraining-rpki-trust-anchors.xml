@@ -118,21 +118,23 @@
       <name>Considerations on Trust Anchor over-claiming</name>
       <t>
         Currently, all five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0, ::/0, and AS 0-4294967295) as subordinate on their Trust Anchor certificates in order to reduce some potential for risk of invalidation in the case of transient registry inconsistencies <xref target="I-D.rir-rpki-allres-ta-app-statement"/>.
-        Such 'all-resources' listings demonstrate that - in the course of normal operations - Trust Anchors may claim authority for INRs outside their current resource holdings.
+        Such 'all-resources' listings demonstrate that - in the course of normal operations - Trust Anchors may claim authority for INRs outside the registry's current resource holdings.
       </t>
       <t>
-        A primary reason for transient registry inconsistencies to potentially occur is when resources are transferred from one registry to another.
-        Of note is that the ability to transfer resources between registries is not universally available: this ability depends on the implementation of registry-specific consensus-driven policy development reciprocated by other registries.
-        Absent a registry's ability to execute inter-registry transfers, the set of holdings is a static list of resources.
+        The primary reason for transient registry inconsistencies to occur would be when resources are transferred from one registry to another.
+        However, the ability to transfer resources between registries is not universally available: this ability depends on the implementation of registry-specific consensus-driven policy development reciprocated by other registries.
+        Another source of churn would be the inflow of new resources following allocations made by the IANA; but because of IPv4 address exhaustion, IPv6 abundance, and 32-bit ASNs being allocated in large blocks - IANA allocations occur far less often than they used to.
+      </t>
+      <t>
+        Absent a registry's ability to execute inter-registry transfers or frequently receive new allocations from IANA, that registry's set of holdings would be a fairly static list of resources.
+      </t>
+      <t>
         Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
-      </t>
-      <t>
         Following the widely deployed information security principle of <xref target="priv">least privilage</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
       </t>
       <t>
-        The principle of constraining Trust Anchors can be applied to privately operated RPKI testbeds, but also to publicly-trusted registries.
-        For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and this policy proposal indicates that implementation is expected to take 12 months after ratification.
-        Therefore, knowing AFRINIC's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
+        Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
+        The principle of constraining Trust Anchors might be useful when working with RPKI testbeds <xref target="OTE"/>, but also in dealings with publicly-trusted registries.
       </t>
     </section>
 
@@ -144,9 +146,12 @@
       </t>
     </section>
 
-    <section>
+    <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
+        For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and this policy proposal indicates that implementation is expected to take 12 months after ratification.
+        IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="recovered"/> in recent times, and Autonomous System Number allocations are also fairly infrequent <xref target="asns"/>.
+
         TBD...
         * gotta make sure list of constraints is up to date
         * periodically review
@@ -190,7 +195,6 @@
         <!-- anchor I-D.rir-rpki-allres-ta-app-statement -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.rir-rpki-allres-ta-app-statement.xml"/>
 
-        <!-- -->
         <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/policy/proposals/2020-gen-006-d3">
           <front>
             <title>AFRINIC Number Resources Transfer Policy (Draft-3)</title>
@@ -216,6 +220,30 @@
             <author fullname="Kyle Brogle"/>
             <author fullname="Leonid Reyzin"/>
             <author fullname="Sharon Goldberg"/>
+          </front>
+        </reference>
+
+        <reference anchor="OTE" target="https://www.arin.net/reference/tools/testing/">
+          <front>
+            <title>Operational Test and Evaluation (OT&amp;E) Environment</title>
+            <author fullname="ARIN"/>
+            <date year="2023"/>
+          </front>
+        </reference>
+
+        <reference anchor="recovered" target="https://www.iana.org/assignments/ipv4-recovered-address-space/ipv4-recovered-address-space.xhtml">
+          <front>
+            <title>IPv4 Recovered Address Space</title>
+            <author fullname="IANA"/>
+            <date month="march" year="2019"/>
+          </front>
+        </reference>
+
+        <reference anchor="asns" target="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml">
+          <front>
+            <title>Autonomous System (AS) Numbers</title>
+            <author fullname="IANA"/>
+            <date month="August" year="2023"/>
           </front>
         </reference>
 
