@@ -179,13 +179,8 @@
       <name>Security Considerations</name>
       <t>
         The routing security benefits promised by the RPKI are derived from assuming trust in registry operators to run flawless certification services.
-        Assuming such trust exposes users to some potential for <xref target="risks"/> and adverse actions by Certificate Authorities <xref target="RFC8211"/>.
-      </t>
-      <t>
-        Limiting the potential for risk to a registry's current holdings rather than ... XXX unbounded authority?
-      </t>
-      <t>
-        XXX Tradeoff between robustness to RPKI problems and robustness to BGP problems.
+        Assuming such trust might exposes users to some potential for <xref target="risks"/> and adverse actions by Certificate Authorities <xref target="RFC8211"/>.
+        Limiting a Trust Anchor's effective signing capabilities to its registry's current holdings (rather assuming unbounded authority) is an effective approach to limit some potential for risk.
       </t>
     </section>
 
