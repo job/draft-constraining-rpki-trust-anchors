@@ -151,7 +151,9 @@
       </t>
       <t>
         The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions, such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
-        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements) such as Ghostbusters records <xref target="RFC6493"/> and Manifests <xref target="RFC9286"/>.
+      </t>
+      <t>
+        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements) such as Ghostbusters records <xref target="RFC6493"/>, Signed TALs <xref target="I-D.ietf-sidrops-signed-tal"/>, and Manifests <xref target="RFC9286"/>.
       </t>
       <t>
         The validation of Constraint containment is a check in addition to all the validation checks specified in <xref target="RFC6487"/>, <xref target="RFC6488"/>, and each Signed Object's profile specification.
@@ -225,6 +227,8 @@
 
         <!-- anchor I-D.ietf-opsawg-9092-update -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-opsawg-9092-update.xml"/>
+
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-signed-tal.xml"/>
 
         <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/policy/proposals/2020-gen-006-d3">
           <front>
