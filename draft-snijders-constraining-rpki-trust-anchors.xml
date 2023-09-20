@@ -146,8 +146,8 @@
         Instead, a simpler alternative approach operating on EE certificates is proposed.
       </t>
       <t>
-        To constrain a Trust Anchor, the IP address and AS number resources listed in the EE certificate's <xref target="RFC3779"/> extensions MUST be fully contained within the locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
-        If the EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing and consider the EE certificate invalid.
+        To constrain a Trust Anchor, the IP address and AS number resources listed in a given EE certificate's <xref target="RFC3779"/> extensions MUST be fully contained within the locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
+        If a given EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing and consider the EE certificate invalid.
       </t>
       <t>
         The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions, such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
