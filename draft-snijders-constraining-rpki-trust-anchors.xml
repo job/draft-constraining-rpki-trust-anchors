@@ -130,7 +130,7 @@
       </t>
       <t>
         Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
-        Following the widely deployed information security principle of <xref target="priv">least privilage</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
+        Following the widely deployed information security principle of <xref target="priv">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
       </t>
       <t>
         Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
@@ -161,7 +161,7 @@
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
-        When assessing the feasability of constraining a Trust Anchor's effective signing abilities to just its registry's current set of holdings, it is important to make an inventory and consider possible future events which might impact the degree of churn in the registry's holdings.
+        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important take note of possible future events which might impact the degree of churn in the registry's holdings.
       </t>
       <t>
         For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and the policy proposal at hand indicates implementation is expected to take 12 months after ratification.
