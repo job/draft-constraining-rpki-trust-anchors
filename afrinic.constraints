@@ -63,6 +63,7 @@
 # From https://web.archive.org/web/20131120040037/http://www.ripe.net/lir-services/resource-management/erx/transferred-resources
 # From https://afrinic.net/fr/library/policies/220-erx-transfer
 2561
+3208
 5536
 6127
 6713
@@ -433,7 +434,6 @@
 # CN=RIPETOAFRINIC/serialNumber=7F7AC180897983E29E937C0A187803C072755545
 # Not Before: Mar 30 14:17:12 2020 GMT / Not After : Mar 30 00:00:00 2025 GMT
 # SHA256:64eh2w7qQrFQVPaQrRJ4kA83gUgE3EDvm0D0AWHCXHM=
-3208
 62.8.64.0/19
 62.12.96.0/19
 62.24.96.0/19
