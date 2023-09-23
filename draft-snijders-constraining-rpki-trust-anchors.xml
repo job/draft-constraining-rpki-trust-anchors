@@ -163,7 +163,7 @@
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
-        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important take note of possible future events which might impact the degree of churn in the registry's holdings.
+        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of possible future events which might impact the degree of churn in the registry's holdings.
       </t>
       <t>
         For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and the policy proposal at hand indicates implementation is expected to take 12 months after ratification.
