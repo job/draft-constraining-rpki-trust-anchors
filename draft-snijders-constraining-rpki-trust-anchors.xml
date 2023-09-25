@@ -64,7 +64,7 @@
     <abstract>
       <t>
         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relying Parties (RPs) to impose locally configured Constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
-        The capability to effectively constrain a Trust Anchor operator's signing authority to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
+        The capability to constrain a Trust Anchor operator's effective signing authority to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust - within a bounded scope.
       </t>
     </abstract>
   </front>
@@ -74,9 +74,8 @@
       <name>Introduction</name>
       <t>
          This document describes an approach for Resource Public Key Infrastructure (RPKI) Relying Parties (RPs) to impose locally configured Constraints on cryptographic products subordinate to publicly-trusted externally operated Trust Anchors (TAs), as implemented in the <xref target="OpenBSD"/> <xref target="rpki-client"/> validator.
-         The capability to effectively constrain a Trust Anchor operator's abilities to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust within a bounded scope.
+        The capability to constrain a Trust Anchor operator's effective signing authority to a limited set of Internet Number Resources (INRs), allows Relying Parties to enjoy the potential benefits of assuming trust - within a bounded scope.
       </t>
-
       <t>
         It is important to emphasize that each Relying Party makes its Trust Anchor inclusion decisions independently, on its own timelines, based on its own inclusion criteria; and that imposed Constraints (if any) are a matter of local configuration.
       </t>
@@ -141,7 +140,7 @@
     <section anchor="constraining">
       <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
-        As noted in <xref target="overclaim"/>, RPKI CA certificates are expected to overclaim in the course of normal operations.
+        As noted in <xref target="overclaim"/>, publicly-trusted RPKI TA certificates are expected to overclaim in the course of normal operations.
         However, applying a customized version of the certification path validation algorithm to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured Constraints would not be a trivial task.
         Instead, a simpler alternative approach operating on EE certificates is proposed.
       </t>
