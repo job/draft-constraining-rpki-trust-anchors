@@ -163,7 +163,7 @@
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
-        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of existing policies (or lack thereof), and possible future events which might impact the degree of churn in the registry's holdings.
+        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of existing policies (or lack thereof) and possible future events which might impact the degree of churn in the registry's holdings.
         Examples are:
       </t>
       <t anchor="ARIN">
@@ -173,10 +173,14 @@
       <t>
         AFRINIC has not ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
         The policy proposal indicates implementation is expected to take an additional 12 months after ratification.
-        Since it's not possible to transfer resources into AFRINIC for the forseeable future, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor.
+        Since it's not possible to transfer resources into AFRINIC, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor for the forseeable future.
       </t>
       <t>
-        IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/> in recent times, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
+        The RIRs collectively manage only a subset of 0.0.0.0/0 <xref target="IANA-IPV4"/> and 2000::/3 <xref target="IANA-IPV6"/>; and have no authority over any parts of 10.0.0.0/8 <xref target="RFC1918"/>, 2001:db8::/32 <xref target="RFC3849"/>, and AS 64512 - 65534 <xref target="RFC6996"/>, for example.
+        Since it's not possible to transfer private internet allocations, documentation prefixes, or private use ASNs into an RIR's management, such resources should not appear subordinate to any RIR's Trust Anchor.
+      </t>
+      <t>
+        In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>; and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
       </t>
       <t>
         The aforementioned observations suggest there is a lot of operational runway to manage and distribute Trust Anchor Constraints in a timely manner.
@@ -189,7 +193,7 @@
       <t>
         The routing security benefits promised by the RPKI are derived from assuming trust in registry operators to run flawless certification services.
         Assuming such trust exposes users to some potential for <xref target="risks"/> and adverse actions by Certificate Authorities <xref target="RFC8211"/>.
-        Limiting a Trust Anchor's effective signing capabilities to its registry's current holdings (rather assuming unbounded authority) is an effective approach to limit some potential for risk.
+        Restricting a Trust Anchor's effective signing capabilities to its respective registry's current holdings - rather assuming unbounded trust in such authorities - is an effective approach to limit some potential for risk.
       </t>
     </section>
 
@@ -270,7 +274,7 @@
           </front>
         </reference>
 
-        <reference anchor="IANA-RECOVERED" target="https://www.iana.org/assignments/ipv4-recovered-address-space/ipv4-recovered-address-space.xhtml">
+        <reference anchor="IANA-RECOVERED" target="https://www.iana.org/assignments/ipv4-recovered-address-space/">
           <front>
             <title>IPv4 Recovered Address Space</title>
             <author fullname="IANA"/>
@@ -278,7 +282,7 @@
           </front>
         </reference>
 
-        <reference anchor="IANA-ASNS" target="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml">
+        <reference anchor="IANA-ASNS" target="https://www.iana.org/assignments/as-numbers/">
           <front>
             <title>Autonomous System (AS) Numbers</title>
             <author fullname="IANA"/>
@@ -296,27 +300,62 @@
           </front>
         </reference>
 
+        <reference anchor="IANA-IPV4" target="https://www.iana.org/assignments/ipv4-address-space/">
+          <front>
+            <title>IANA IPv4 Address Space Registry</title>
+            <author fullname="IANA"/>
+            <date month="July" year="2023"/>
+          </front>
+        </reference>
+
+        <reference anchor="IANA-IPV6" target="https://www.iana.org/assignments/ipv6-unicast-address-assignments/">
+          <front>
+            <title>IPv6 Global Unicast Address Assignments</title>
+            <author fullname="IANA"/>
+            <date month="November" year="2019"/>
+          </front>
+        </reference>
+
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1918.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3849.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6480.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6481.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6487.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6488.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6493.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6996.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8209.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8211.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9286.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9323.xml"/>
+
       </references>
     </references>
 
     <section anchor="constraints">
-      <name>Example Constraints listings</name>
+      <name>Example listings of Constraints</name>
       <t>
-        Below are example lists of Constraints related to ARIN and AFRINIC managed Internet Number Resources.
+        This section contains examples of Constraints listings related to ARIN &amp; AFRINIC managed INRs, and INRs allocated for private or non-public use.
+      </t>
+      <t>
+        As it's clumsy and error prone to calculate the complement of a block of resources, a shorthand notation is used in the form of a <strong>!</strong> prefix to indicate INRs which simply may not appear, rather than using an exhaustive allow list of what INRs may appear.
+        Blocklist entries (prefixed with <strong>!</strong>) take precedence over regular allowlist entries.
+        Blocklist entries may not overlap with other blocklist entries.
+        Allowlist entries may not overlap with other allowlist entries.
       </t>
 
+      <section numbered="false" toc="include" anchor="not-internet">
+        <name>Constraints related to non-public resources</name>
+        <t>
+          The below constraints relate to IP addresses and ASNs which are not globally unique and not managed by any RIR, as such these are not expected to appear subordinate to any publicly-trusted Trust Anchor.
+          By placing the below content in files named <strong>arin.constraints</strong>; the associated Trust Anchor reachable via <strong>arin.tal</strong> is constrained such that any EE certificates or Signed Objects related to private-use INRs is considered invalid.
+        </t>
+        <sourcecode type="text" src="arin.constraints"/>
+      </section>
+
       <section numbered="false" toc="include" anchor="arin-c">
-        <name>Constraints related to ARIN</name>
+        <name>Constraints related to ARIN IPv6 resources</name>
         <t>
           ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own (<xref target="ARIN"/>).
           By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resoures are considered invalid.
@@ -328,11 +367,11 @@
       </section>
 
       <section numbered="false" toc="include">
-        <name>Constraints related to AFRINIC</name>
+        <name>Constraints related to AFRINIC resources</name>
         <t>
-          Below is an example list of Constraints related to AFRINIC-managed Internet Number Resources.
+          Below is an example intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
           By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
-          Since the below is an exhaustive list, there is no need to additionally specify negative constraints using <strong>!</strong> (as was done in <xref target="arin-c"/>).
+          Since the below is an exhaustive list, there is no need to additionally specify negative constraints using <strong>!</strong> (as was done in <xref target="arin-c"/> and <xref target="not-internet"/>).
         </t>
         <sourcecode type="text" src="afrinic.constraints"/>
       </section>
