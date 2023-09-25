@@ -173,7 +173,7 @@
       <t>
         AFRINIC has not ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
         The policy proposal indicates implementation is expected to take an additional 12 months after ratification.
-        Since it's not possible to transfer resources into AFRINIC for the forseeable future, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor.
+        Since it's not possible to transfer resources into AFRINIC for the foreseeable future, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor.
       </t>
       <t>
         IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/> in recent times, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
@@ -319,7 +319,7 @@
         <name>Constraints related to ARIN</name>
         <t>
           ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own (<xref target="ARIN"/>).
-          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resoures are considered invalid.
+          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resources are considered invalid.
         </t>
         <t>
           The <strong>!</strong> prefix is a shortcut to indicate to the RP what resources may not appear, rather than providing an exhaustive list of what may appear.
