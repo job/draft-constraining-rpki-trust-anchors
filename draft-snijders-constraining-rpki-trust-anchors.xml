@@ -341,7 +341,7 @@
       </t>
       <t>
         As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
-        Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries (entries prefixes with <strong>allow</strong>).
+        Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries (entries prefixed with <strong>allow</strong>).
         Denylist entries may not overlap with other denylist entries.
         Allowlist entries may not overlap with other allowlist entries.
         The ordering of entries is not significant.
