@@ -130,7 +130,7 @@
       </t>
       <t>
         Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
-        Following the widely deployed information security principle of <xref target="priv">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
+        Following the widely deployed information security principle of <xref target="PRIVSEP">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
       </t>
       <t>
         Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
@@ -163,14 +163,23 @@
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
-        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of possible future events which might impact the degree of churn in the registry's holdings.
+        When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of existing policies (or lack thereof), and possible future events which might impact the degree of churn in the registry's holdings.
+        Examples are:
+      </t>
+      <t anchor="ARIN">
+        The ARIN policy development community abandoned a proposal to allow inter-regional IPv6 resource transfers <xref target="ARIN-2019-4"/>.
+        Since it's currently not possible to transfer IPv6 resources from ARIN to any other RIR, ARIN's IANA-allocated IPv6 resources should not appear subordinate to any Trust Anchor other than ARIN's own Trust Anchor.
       </t>
       <t>
-        For example, AFRINIC has not yet ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>, and the policy proposal at hand indicates implementation is expected to take 12 months after ratification.
-        IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="recovered"/> in recent times, and Autonomous System Number allocations are also fairly infrequent <xref target="asns"/>.
-        The aforementioned observations suggest there is a lot of operational runway to manage and distribute Constraints in a timely manner.
+        AFRINIC has not ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
+        The policy proposal indicates implementation is expected to take an additional 12 months after ratification.
+        Since it's not possible to transfer resources into AFRINIC for the forseeable future, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor.
       </t>
       <t>
+        IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/> in recent times, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
+      </t>
+      <t>
+        The aforementioned observations suggest there is a lot of operational runway to manage and distribute Trust Anchor Constraints in a timely manner.
         Maintainers of Constraint lists disseminated as part of an operating system or a third-party software package release process would do well to assume a six month delay for users to update.
       </t>
     </section>
@@ -235,7 +244,7 @@
           </front>
         </reference>
 
-        <reference anchor="priv" target="https://sha256.net/privsep.html">
+        <reference anchor="PRIVSEP" target="https://sha256.net/privsep.html">
           <front>
             <title>Privilege drop, privilege separation, and restricted-service operating mode in OpenBSD</title>
             <author fullname="Florian Obser"/>
@@ -261,7 +270,7 @@
           </front>
         </reference>
 
-        <reference anchor="recovered" target="https://www.iana.org/assignments/ipv4-recovered-address-space/ipv4-recovered-address-space.xhtml">
+        <reference anchor="IANA-RECOVERED" target="https://www.iana.org/assignments/ipv4-recovered-address-space/ipv4-recovered-address-space.xhtml">
           <front>
             <title>IPv4 Recovered Address Space</title>
             <author fullname="IANA"/>
@@ -269,11 +278,21 @@
           </front>
         </reference>
 
-        <reference anchor="asns" target="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml">
+        <reference anchor="IANA-ASNS" target="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml">
           <front>
             <title>Autonomous System (AS) Numbers</title>
             <author fullname="IANA"/>
             <date month="August" year="2023"/>
+          </front>
+        </reference>
+
+        <reference anchor="ARIN-2019-4" target="https://www.arin.net/vault/policy/proposals/2019_4.html">
+          <front>
+            <title>Draft Policy ARIN-2019-4: Allow Inter-regional IPv6 Resource Transfers</title>
+            <author fullname="Job Snijders"/>
+            <author fullname="David Farmer"/>
+            <author fullname="Joe Provo"/>
+            <date month="September" year="2019"/>
           </front>
         </reference>
 
@@ -291,15 +310,40 @@
     </references>
 
     <section anchor="constraints">
-      <name>Example Constraints listing</name>
+      <name>Example Constraints listings</name>
       <t>
-        Below is an example list of Constraints related to AFRINIC-managed Internet Number Resources.
-        By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
+        Below are example lists of Constraints related to ARIN and AFRINIC managed Internet Number Resources.
       </t>
 
-      <sourcecode type="text" src="afrinic.constraints"/>
+      <section numbered="false" toc="include" anchor="arin-c">
+        <name>Constraints related to ARIN</name>
+        <t>
+          ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own (<xref target="ARIN"/>).
+          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resoures are considered invalid.
+        </t>
+        <t>
+          The <strong>!</strong> prefix is a shortcut to indicate to the RP what resources may not appear, rather than providing an exhaustive list of what may appear.
+        </t>
+        <sourcecode type="text" src="ripe.constraints"/>
+      </section>
 
-    </section>
+      <section numbered="false" toc="include">
+        <name>Constraints related to AFRINIC</name>
+        <t>
+          Below is an example list of Constraints related to AFRINIC-managed Internet Number Resources.
+          By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
+          Since the below is an exhaustive list, there is no need to additionally specify negative constraints using <strong>!</strong> (as was done in <xref target="arin-c"/>).
+        </t>
+        <sourcecode type="text" src="afrinic.constraints"/>
+      </section>
+   </section>
+
+   <section anchor="acknowledgements" numbered="false" toc="include">
+     <name>Acknowledgements</name>
+     <t>
+       Thanks to Niels Bakker, Tony Tauber, and Tom Scholl for their feedback and input.
+     </t>
+   </section>
 
   </back>
 

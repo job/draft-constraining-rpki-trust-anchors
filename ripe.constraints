@@ -1,0 +1,10 @@
+# From https://www.iana.org/assignments/ipv6-unicast-address-assignments
+# ARIN IPv6 resources should not appear subordinate to the
+# AFRINIC, APNIC, LACNIC, or RIPE NCC Trust Anchors.
+!2001:0400::/23
+!2001:1800::/23
+!2001:4800::/23
+!2600:0000::/12
+!2610:0000::/23
+!2620:0000::/23
+!2630:0000::/12
