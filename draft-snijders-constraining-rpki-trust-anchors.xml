@@ -365,15 +365,15 @@
           Given that ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own, private use INRs are not managed by any RIR, and AFRINIC resources cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC's, LACNIC's, and RIPE NCC's Trust Anchor.
         </t>
         <t>
-          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resources are considered invalid.
+          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively; are constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
         </t>
-        <sourcecode type="text" src="ripe.constraints"/>
+        <sourcecode type="text" src="apnic-lacnic-ripe.constraints"/>
       </section>
 
       <section numbered="false" toc="include" anchor="afrinic">
         <name>Constraints applicable to AFRINIC's Trust Anchor</name>
         <t>
-          The below listing is intended to be a complate and exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
+          The below listing is intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
           Given that inter-RIR transfers aren't possible into and out of the AFRINIC registry, it suffices to only list INRs which may appear subordinate to AFRINIC and leverage an implicit deny for all non-AFRINIC resources.
         </t>
         <t>
