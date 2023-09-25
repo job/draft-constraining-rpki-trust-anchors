@@ -337,41 +337,47 @@
       <name>Example listings of Constraints</name>
       <t>
         This section contains examples of Constraints listings related to ARIN &amp; AFRINIC managed INRs, and INRs allocated for private or non-public use.
+        Constraint suggestions are offered specific to each of the five RIR Trust Anchors.
       </t>
       <t>
-        As it's clumsy and error prone to calculate the complement of a block of resources, a shorthand notation is used in the form of a <strong>!</strong> prefix to indicate INRs which simply may not appear, rather than using an exhaustive allow list of what INRs may appear.
-        Blocklist entries (prefixed with <strong>!</strong>) take precedence over regular allowlist entries.
-        Blocklist entries may not overlap with other blocklist entries.
+        As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
+        Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries.
+        Denylist entries may not overlap with other denylist entries.
         Allowlist entries may not overlap with other allowlist entries.
+        The ordering of entries is not significant.
       </t>
 
-      <section numbered="false" toc="include" anchor="not-internet">
-        <name>Constraints related to non-public resources</name>
+      <section numbered="false" toc="include" anchor="arin-c">
+        <name>Constraints applicable to ARIN's Trust Anchor</name>
         <t>
-          The below constraints relate to IP addresses and ASNs which are not globally unique and not managed by any RIR, as such these are not expected to appear subordinate to any publicly-trusted Trust Anchor.
-          By placing the below content in files named <strong>arin.constraints</strong>; the associated Trust Anchor reachable via <strong>arin.tal</strong> is constrained such that any EE certificates or Signed Objects related to private-use INRs is considered invalid.
+          Most of the below constraints relate to IP addresses and ASNs which are not globally unique and not managed by any RIR, as such these INRs are not expected to appear subordinate to any publicly-trusted Trust Anchor.
+          Additionally, since inter-RIR transfers involving ARIN may not include IPv6 addresses; ARIN's Trust Anchor is constrained to just its own IANA allocated IPv6 blocks.
+        </t>
+        <t>
+          By placing the below content in a file named <strong>arin.constraints</strong>; the associated Trust Anchor reachable via <strong>arin.tal</strong> is constrained such that any EE certificates listing private-use INRs, or non-ARIN IPv6 blocks, or AFRINIC superblocks, are considered invalid.
         </t>
         <sourcecode type="text" src="arin.constraints"/>
       </section>
 
-      <section numbered="false" toc="include" anchor="arin-c">
-        <name>Constraints related to ARIN IPv6 resources</name>
+      <section numbered="false" toc="include" anchor="apnic-lacnic-ripe">
+        <name>Constraints applicable to APNIC's, LACNIC's, and RIPE NCC's Trust Anchor</name>
         <t>
-          ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own (<xref target="ARIN"/>).
-          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resources are considered invalid.
+          Given that ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own, private use INRs are not managed by any RIR, and AFRINIC resources cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC's, LACNIC's, and RIPE NCC's Trust Anchor.
         </t>
         <t>
-          The <strong>!</strong> prefix is a shortcut to indicate to the RP what resources may not appear, rather than providing an exhaustive list of what may appear.
+          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively, are constrained such that any EE certificates or Signed Objects related to ARIN IPv6 resources are considered invalid.
         </t>
         <sourcecode type="text" src="ripe.constraints"/>
       </section>
 
-      <section numbered="false" toc="include">
-        <name>Constraints related to AFRINIC resources</name>
+      <section numbered="false" toc="include" anchor="afrinic">
+        <name>Constraints applicable to AFRINIC's Trust Anchor</name>
         <t>
-          Below is an example intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
+          The below listing is intended to be a complate and exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
+          Given that inter-RIR transfers aren't possible into and out of the AFRINIC registry, it suffices to only list INRs which may appear subordinate to AFRINIC and leverage an implicit deny for all non-AFRINIC resources.
+        </t>
+        <t>
           By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
-          Since the below is an exhaustive list, there is no need to additionally specify negative constraints using <strong>!</strong> (as was done in <xref target="arin-c"/> and <xref target="not-internet"/>).
         </t>
         <sourcecode type="text" src="afrinic.constraints"/>
       </section>

@@ -1,57 +1,58 @@
 # From https://www.iana.org/assignments/ipv6-unicast-address-assignments
-2001:0400::/23
-2001:1800::/23
-2001:4800::/23
-2600:0000::/12
-2610:0000::/23
-2620:0000::/23
-2630:0000::/12
+# For IPv6 nothing but ARIN's own IPv6 blocks are permitted.
+allow 2001:400::/23
+allow 2001:1800::/23
+allow 2001:4800::/23
+allow 2600::/12
+allow 2610::/23
+allow 2620::/23
+allow 2630::/12
 
-# # AFRINIC Internet Number Resources cannot be transferred
-# # From https://www.iana.org/assignments/ipv4-address-space/
-# !41.0.0.0/8
-# !102.0.0.0/8
-# !105.0.0.0/8
-# !154.0.0.0/8
-# !196.0.0.0/7
-# # From https://www.iana.org/assignments/ipv6-address-space/
-# !2001:4200::/23
-# !2c00::/12
-# # From https://www.iana.org/assignments/as-numbers/
-# !36864 - 37887
-# !327680 - 328703
-# !328704 - 329727
+# AFRINIC Internet Number Resources cannot be transferred
+# No need to list AFRINIC IPv6 space as ARIN's IPv6 allowlist is exhaustive.
+# From https://www.iana.org/assignments/ipv4-address-space/
+deny 41.0.0.0/8
+deny 102.0.0.0/8
+deny 105.0.0.0/8
+deny 154.0.0.0/8
+deny 196.0.0.0/7
+# From https://www.iana.org/assignments/as-numbers/
+deny 36864 - 37887
+deny 327680 - 328703
+deny 328704 - 329727
 
-# # Private use IPv4 & IPv6 addresses and ASNs
-# !0.0.0.0/8               # RFC 1122 'this' network
-# !10.0.0.0/8              # RFC 1918 private space
-# !100.64.0.0/10           # RFC 6598 Carrier Grade NAT
-# !127.0.0.0/8             # RFC 1122 localhost
-# !169.254.0.0/16          # RFC 3927 link local
-# !172.16.0.0/12           # RFC 1918 private space
-# !192.0.2.0/24            # RFC 5737 TEST-NET-1
-# !192.88.99.0/24          # RFC 7526 6to4 anycast relay
-# !192.168.0.0/16          # RFC 1918 private space
-# !198.18.0.0/15           # RFC 2544 benchmarking
-# !198.51.100.0/24         # RFC 5737 TEST-NET-2
-# !203.0.113.0/24          # RFC 5737 TEST-NET-3
-# !224.0.0.0/4             # Multicast
-# !240.0.0.0/4             # Reserved
-# !2001:2::/48             # RFC 5180 BMWG
-# !2001:10::/28            # RFC 4843 ORCHID
-# !2001:db8::/32           # RFC 3849 Documentation
-# !2002::/16               # RFC 7526 6to4 anycast relay
-# !3ffe::/16               # Deprecated 6bone
-# !0                       # RFC 7300
-# !23456                   # AS_TRANS
-# !64496 - 64511           # RFC 5398
-# !65536 - 65551           # RFC 5398
-# !64512 - 65534           # RFC 6996
-# !4200000000 - 4294967294 # RFC 6996
-# !65535                   # RFC 7300
-# !4294967295              # RFC 7300
-# !65552 - 131071          # IANA Reserved
+# Private use IPv4 & IPv6 addresses and ASNs
+deny 0.0.0.0/8               # RFC 1122 Local Identification
+deny 10.0.0.0/8              # RFC 1918 private space
+deny 100.64.0.0/10           # RFC 6598 Carrier Grade NAT
+deny 127.0.0.0/8             # RFC 1122 localhost
+deny 169.254.0.0/16          # RFC 3927 link local
+deny 172.16.0.0/12           # RFC 1918 private space
+deny 192.0.2.0/24            # RFC 5737 TEST-NET-1
+deny 192.88.99.0/24          # RFC 7526 6to4 anycast relay
+deny 192.168.0.0/16          # RFC 1918 private space
+deny 198.18.0.0/15           # RFC 2544 benchmarking
+deny 198.51.100.0/24         # RFC 5737 TEST-NET-2
+deny 203.0.113.0/24          # RFC 5737 TEST-NET-3
+deny 224.0.0.0/4             # Multicast
+deny 240.0.0.0/4             # Reserved
 
-# The rest
-0.0.0.0/0
-0 - 4294967295
+deny 2001:2::/48             # RFC 5180 BMWG
+deny 2001:10::/28            # RFC 4843 ORCHID
+deny 2001:db8::/32           # RFC 3849 Documentation
+deny 2002::/16               # RFC 7526 6to4 anycast relay
+deny 3ffe::/16               # Deprecated 6bone
+
+deny 0                       # RFC 7607
+deny 23456                   # RFC 4893 AS_TRANS
+deny 64496 - 64511           # RFC 5398
+deny 65536 - 65551           # RFC 5398
+deny 64512 - 65534           # RFC 6996
+deny 65535                   # RFC 7300
+deny 4200000000 - 4294967294 # RFC 6996
+deny 4294967295              # RFC 7300
+deny 65552 - 131071          # IANA Reserved
+
+# Allow everything else
+allow 0.0.0.0/0
+allow 0 - 4294967295
