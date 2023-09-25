@@ -1,5 +1,5 @@
 # From https://www.iana.org/assignments/ipv6-unicast-address-assignments
-# For IPv6 nothing but ARIN's own IPv6 blocks are permitted.
+# For IPv6, nothing other than ARIN's own IPv6 blocks are permitted.
 allow 2001:400::/23
 allow 2001:1800::/23
 allow 2001:4800::/23
@@ -13,6 +13,7 @@ allow 2630::/12
 deny 41.0.0.0/8
 deny 102.0.0.0/8
 deny 105.0.0.0/8
+
 # Holes due to historical reasons
 deny 154.0.0.0 - 154.4.255.255
 # hole for 154.5.0.0/16

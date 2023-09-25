@@ -33,12 +33,12 @@
     <seriesInfo name="Internet-Draft" value="draft-snijders-constraining-rpki-trust-anchors"/>
 
     <author fullname="Job Snijders" initials="J." surname="Snijders">
-      <organization>OpenBSD</organization>
+      <organization>Fastly</organization>
       <address>
         <postal>
           <country>NL</country>
         </postal>
-        <email>job@openbsd.org</email>
+        <email>job@fastly.com</email>
       </address>
     </author>
 
@@ -386,7 +386,7 @@
    <section anchor="acknowledgements" numbered="false" toc="include">
      <name>Acknowledgements</name>
      <t>
-       Thanks to Niels Bakker, Tony Tauber, and Tom Scholl for their feedback and input.
+       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, and Tom Scholl for their feedback and input.
      </t>
    </section>
 
