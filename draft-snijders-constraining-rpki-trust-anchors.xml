@@ -141,7 +141,7 @@
       <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
         As noted in <xref target="overclaim"/>, publicly-trusted RPKI TA certificates are expected to overclaim in the course of normal operations.
-        However, applying a bespoke implementation of the certification path validation algorithm applied to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured Constraints would not be a trivial task.
+        However, applying a bespoke implementation of the certification path validation algorithm to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured Constraints would not be a trivial task.
         Instead, an alternative and simpler approach operating on EE certificates is proposed.
       </t>
       <t>
