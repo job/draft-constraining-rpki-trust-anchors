@@ -141,8 +141,8 @@
       <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
         As noted in <xref target="overclaim"/>, publicly-trusted RPKI TA certificates are expected to overclaim in the course of normal operations.
-        However, applying a bespoke implementation of the certification path validation algorithm to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured Constraints would not be a trivial task.
-        Instead, a simpler alternative approach operating on EE certificates is proposed.
+        However, applying a bespoke implementation of the certification path validation algorithm applied to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured Constraints would not be a trivial task.
+        Instead, an alternative and simpler approach operating on EE certificates is proposed.
       </t>
       <t>
         To constrain a Trust Anchor, the IP address and AS number resources listed in a given EE certificate's <xref target="RFC3779"/> extensions MUST be fully contained within the locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
