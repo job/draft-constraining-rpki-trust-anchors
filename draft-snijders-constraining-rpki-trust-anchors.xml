@@ -373,7 +373,7 @@
         <name>Constraints applicable to AFRINIC's Trust Anchor</name>
         <t>
           The below listing is intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
-          Given that inter-RIR transfers aren't possible into and out of the AFRINIC registry, it suffices to only list INRs which may appear subordinate to AFRINIC and leverage an implicit deny for all non-AFRINIC resources.
+          Given that inter-RIR resource transfers aren't possible into and out of the AFRINIC registry, it suffices to construct an allowlist and list only INRs which may appear subordinate to AFRINIC.
         </t>
         <t>
           By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
