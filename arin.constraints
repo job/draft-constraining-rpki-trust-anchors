@@ -83,12 +83,12 @@ deny 2002::/16               # RFC 7526 6to4 anycast relay
 deny 3ffe::/16               # Deprecated 6bone
 deny 23456                   # RFC 4893 AS_TRANS
 deny 64496 - 64511           # RFC 5398
-deny 65536 - 65551           # RFC 5398
 deny 64512 - 65534           # RFC 6996
 deny 65535                   # RFC 7300
+deny 65536 - 65551           # RFC 5398
+deny 65552 - 131071          # IANA Reserved
 deny 4200000000 - 4294967294 # RFC 6996
 deny 4294967295              # RFC 7300
-deny 65552 - 131071          # IANA Reserved
 
 # Allow the complement of what is denied
 allow 0.0.0.0/0
