@@ -152,7 +152,7 @@
         The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
       </t>
       <t>
-        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements), such as Ghostbusters records <xref target="RFC6493"/>, Signed TALs <xref target="I-D.ietf-sidrops-signed-tal"/>, and Manifests <xref target="RFC9286"/>.
+        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements); such as Ghostbusters records <xref target="RFC6493"/>, Signed TALs <xref target="I-D.ietf-sidrops-signed-tal"/>, and Manifests <xref target="RFC9286"/>.
       </t>
       <t>
         The validation of Constraint containment is a check in addition to all the validation checks specified in <xref target="RFC6487"/>, <xref target="RFC6488"/>, and each Signed Object's profile specification.
@@ -179,7 +179,7 @@
         Since it's not possible to transfer private internet allocations, documentation prefixes, or private use ASNs into an RIR's management, such resources should not appear subordinate to any RIR's Trust Anchor.
       </t>
       <t>
-        In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>; and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
+        In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
       </t>
       <t>
         The aforementioned observations suggest there is a lot of operational runway to manage and distribute Trust Anchor Constraints in a timely manner.
