@@ -128,7 +128,7 @@
         Absent a registry's ability to execute inter-registry transfers or frequently receive new allocations from IANA, that registry's set of holdings would be a fairly static list of resources.
       </t>
       <t>
-        Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor; even if the Trust Anchor certificate lists 'all-resources' as subordinate.
+        Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor, even when the Trust Anchor certificate lists 'all-resources' as subordinate.
         Following the widely deployed information security principle of <xref target="PRIVSEP">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
       </t>
       <t>
