@@ -133,7 +133,7 @@
       </t>
       <t>
         Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
-        The principle of constraining Trust Anchors might be useful when for example working with RPKI testbeds <xref target="OTE"/>, but also in dealings with publicly-trusted registries.
+        The principle of constraining Trust Anchors might be useful when for example working with RPKI testbeds <xref target="OTE"/>, risky Trust Anchors which cover unallocated space with AS0 ROAs <xref target="AS0TAL"/>, but also in dealings with publicly-trusted registries.
       </t>
     </section>
 
@@ -312,6 +312,14 @@
             <title>IPv6 Global Unicast Address Assignments</title>
             <author fullname="IANA"/>
             <date month="November" year="2019"/>
+          </front>
+        </reference>
+
+        <reference anchor="AS0TAL" target="https://www.apnic.net/community/security/resource-certification/apnic-limitations-of-liability-for-rpki-2/">
+          <front>
+            <title>Important notes on the APNIC AS0 ROA</title>
+            <author fullname="APNIC"/>
+            <date year="2023"/>
           </front>
         </reference>
 
