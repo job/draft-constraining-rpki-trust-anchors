@@ -149,7 +149,7 @@
         If a given EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing and consider the EE certificate invalid.
       </t>
       <t>
-        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions, such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
+        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
       </t>
       <t>
         The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements) such as Ghostbusters records <xref target="RFC6493"/>, Signed TALs <xref target="I-D.ietf-sidrops-signed-tal"/>, and Manifests <xref target="RFC9286"/>.
