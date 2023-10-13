@@ -15,9 +15,27 @@ allow 327680 - 328703
 allow 328704 - 329727
 
 # Holes
+deny 154.1.0.0/16                 # ARIN
+deny 154.2.0.0/15                 # ARIN
+deny 154.4.0.0/14                 # ARIN
+deny 154.8.0.0 - 154.8.47.255     # RIPE
 deny 154.8.48.0 - 154.8.255.255   # APNIC
+deny 154.9.0.0/16                 # ARIN
 deny 154.10.0.0/16                # APNIC
+deny 154.11.0.0/16                # ARIN
+deny 154.12.0.0/15                # ARIN
+deny 154.14.0.0/15                # RIPE
+deny 154.17.0.0/16                # ARIN
+deny 154.18.0.0/15                # ARIN
+deny 154.20.0.0/14                # ARIN
+deny 154.24.0.0/13                # ARIN
+deny 154.32.0.0/16                # RIPE
 deny 154.33.0.0 - 154.34.255.255  # APNIC
+deny 154.35.0.0/16                # ARIN
+deny 154.36.0.0/14                # ARIN
+deny 154.40.0.0/13                # ARIN
+deny 154.48.0.0/12                # ARIN
+deny 154.64.0.0/16                # ARIN
 deny 196.1.1.0/24                 # APNIC
 deny 196.1.68.0/24                # APNIC
 deny 196.1.104.0 - 196.1.106.255  # APNIC
@@ -28,13 +46,10 @@ deny 196.3.65.0/24                # APNIC
 deny 196.3.72.0/24                # APNIC
 deny 196.12.32.0/19               # APNIC
 deny 196.15.16.0/20               # APNIC
-deny 154.5.0.0/16                 # ARIN
-deny 154.11.0.0/16                # ARIN
-deny 154.20.0.0/16                # ARIN
-deny 196.32.32.0/19               # LACNIC
 deny 196.29.64.0/19               # LACNIC
-deny 196.40.0.0 - 196.40.95.255   # LACNIC
+deny 196.32.32.0/19               # LACNIC
 deny 196.32.64.0/19               # LACNIC
+deny 196.40.0.0 - 196.40.95.255   # LACNIC
 
 # From https://www.iana.org/assignments/ipv4-recovered-address-space
 allow 45.96.0.0 - 45.111.255.255

@@ -13,8 +13,4 @@ clean:
 	rm -f *.html *.txt *.exp.xml
 
 install:
-	doas cp arin.constraints /etc/rpki/
-	doas cp afrinic.constraints /etc/rpki/
-	doas cp apnic-lacnic-ripe.constraints /etc/rpki/ripe.constraints
-	doas cp apnic-lacnic-ripe.constraints /etc/rpki/lacnic.constraints
-	doas cp apnic-lacnic-ripe.constraints /etc/rpki/ripe.constraints
+	doas cp {afrinic,apnic,arin,lacnic,ripe}.constraints /etc/rpki/

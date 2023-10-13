@@ -17,7 +17,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="info"
-     docName="draft-snijders-constraining-rpki-trust-anchors-00"
+     docName="draft-snijders-constraining-rpki-trust-anchors-01"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
@@ -165,11 +165,20 @@
         When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of existing policies (or lack thereof) and possible future events which might impact the degree of churn in the registry's holdings.
         Examples are:
       </t>
-      <t anchor="ARIN">
+      <t anchor="ARIN-policy">
         The ARIN policy development community abandoned a proposal to allow inter-regional IPv6 resource transfers <xref target="ARIN-2019-4"/>.
         Since it's currently not possible to transfer IPv6 resources from ARIN to any other RIR, ARIN's IANA-allocated IPv6 resources should not appear subordinate to any Trust Anchor other than ARIN's own Trust Anchor.
       </t>
-      <t>
+      <t anchor="APNIC-policy">
+        The APNIC policy development community has not developed <xref target="APNIC-interrir">policy</xref> to support inter-RIR IPv6 transfers.
+      </t>
+      <t anchor="LACNIC-policy">
+        The LACNIC policy development community has not developed <xref target="LACNIC-interrir">policy</xref> to support inter-RIR IPv6 transfers.
+      </t>
+      <t anchor="RIPE-policy">
+        The RIPE NCC policy development community has not developed <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers.
+      </t>
+      <t anchor="AFRINIC-policy">
         AFRINIC has not ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
         The policy proposal indicates implementation is expected to take an additional 12 months after ratification.
         Since it's not possible to transfer resources into AFRINIC, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor for the foreseeable future.
@@ -323,6 +332,30 @@
           </front>
         </reference>
 
+	<reference anchor="RIPE-interrir" target="https://www.ripe.net/manage-ips-and-asns/resource-transfers-and-mergers/inter-rir-transfers">
+          <front>
+            <title>Inter-RIR Transfers</title>
+            <author fullname="RIPE NCC"/>
+            <date month="february" year="2023"/>
+          </front>
+        </reference>
+
+	<reference anchor="LACNIC-interrir" target="https://www.lacnic.net/innovaportal/file/680/1/manual-politicas-en-2-19.pdf">
+          <front>
+            <title>LACNIC POLICY MANUAL (v2.19 – 22/08/2023)</title>
+            <author fullname="LACNIC"/>
+            <date month="august" year="2023"/>
+          </front>
+        </reference>
+
+	<reference anchor="APNIC-interrir" target="https://www.apnic.net/manage-ip/manage-resources/transfer-resources/transfer-of-unused-ip-and-as-numbers/">
+          <front>
+            <title>Transfer of unused IPv4 addresses and/or AS numbers</title>
+            <author fullname="APNIC"/>
+            <date year="2023"/>
+          </front>
+        </reference>
+
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1918.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3849.xml"/>
@@ -354,7 +387,19 @@
         The ordering of entries is not significant.
       </t>
 
-      <section numbered="false" toc="include" anchor="arin-c">
+      <section numbered="false" toc="include" anchor="afrinic">
+        <name>Constraints applicable to AFRINIC's Trust Anchor</name>
+        <t>
+          The below listing is intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
+          Inter-RIR resource transfers aren't possible into and out of the AFRINIC registry.
+        </t>
+        <t>
+          By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
+        </t>
+        <sourcecode type="text" src="afrinic.constraints"/>
+      </section>
+
+      <section numbered="false" toc="include" anchor="arin">
         <name>Constraints applicable to ARIN's Trust Anchor</name>
         <t>
           Most of the below constraints relate to IP addresses and ASNs which are not globally unique and not managed by any RIR, as such these INRs are not expected to appear subordinate to any publicly-trusted Trust Anchor.
@@ -366,28 +411,39 @@
         <sourcecode type="text" src="arin.constraints"/>
       </section>
 
-      <section numbered="false" toc="include" anchor="apnic-lacnic-ripe">
-        <name>Constraints applicable to APNIC's, LACNIC's, and RIPE NCC's Trust Anchor</name>
+      <section numbered="false" toc="include" anchor="apnic">
+        <name>Constraints applicable to APNIC's Trust Anchor</name>
         <t>
-          Given that ARIN IPv6 resources are not expected to appear subordinate to any Trust Anchor other than ARIN's own, private use INRs are not managed by any RIR, and AFRINIC resources cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC's, LACNIC's, and RIPE NCC's Trust Anchor.
+          Given that ARIN, LACNIC, and RIPE IPv6 resources cannot be transferred to APNIC, only APNIC IPv6 resources should appear subordinate to APNIC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC Trust Anchor.
         </t>
         <t>
-          By placing the below content in files named <strong>apnic.constraints</strong>, <strong>lacnic.constraints</strong>, and <strong>ripe.constraints</strong>; the associated Trust Anchors reachable via <strong>apnic.tal</strong>, <strong>lacnic.tal</strong>, and <strong>ripe.tal</strong> respectively; are constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
+          By placing the below content in files named <strong>apnic.constraints</strong>; the associated Trust Anchor reachable via <strong>apnic.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
         </t>
-        <sourcecode type="text" src="apnic-lacnic-ripe.constraints"/>
+        <sourcecode type="text" src="apnic.constraints"/>
       </section>
 
-      <section numbered="false" toc="include" anchor="afrinic">
-        <name>Constraints applicable to AFRINIC's Trust Anchor</name>
+      <section numbered="false" toc="include" anchor="lacnic">
+        <name>Constraints applicable to LACNIC's Trust Anchor</name>
         <t>
-          The below listing is intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
-          Given that inter-RIR resource transfers aren't possible into and out of the AFRINIC registry, it suffices to construct an allowlist and list only INRs which may appear subordinate to AFRINIC.
+          Given that ARIN, APNIC, and RIPE IPv6 resources cannot be transferred to LACNIC, only LACNIC IPv6 resources should appear subordinate to LACNIC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to LACNIC Trust Anchor.
         </t>
         <t>
-          By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
+          By placing the below content in files named <strong>lacnic.constraints</strong>; the associated Trust Anchor reachable via <strong>lacnic.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
         </t>
-        <sourcecode type="text" src="afrinic.constraints"/>
+        <sourcecode type="text" src="lacnic.constraints"/>
       </section>
+
+      <section numbered="false" toc="include" anchor="ripe">
+        <name>Constraints applicable to LACNIC's Trust Anchor</name>
+        <t>
+          Given that ARIN, APNIC, and LACNIC IPv6 resources cannot be transferred to RIPE NCC, only RIPE NCC IPv6 resources should appear subordinate to RIPE NCC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to RIPE NCC Trust Anchor.
+        </t>
+        <t>
+          By placing the below content in files named <strong>ripe.constraints</strong>; the associated Trust Anchor reachable via <strong>ripe.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
+        </t>
+        <sourcecode type="text" src="ripe.constraints"/>
+      </section>
+
    </section>
 
    <section anchor="acknowledgements" numbered="false" toc="include">

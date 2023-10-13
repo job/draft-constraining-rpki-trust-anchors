@@ -1,30 +1,15 @@
 # From https://www.iana.org/assignments/ipv6-unicast-address-assignments
-allow 2001:400::/23
-allow 2001:1800::/23
-allow 2001:4800::/23
-allow 2600::/12
-allow 2610::/23
-allow 2620::/23
-allow 2630::/12
+allow 2001:1200::/23
+allow 2800::/12
 
 # AFRINIC Internet Number Resources cannot be transferred
 # From https://www.iana.org/assignments/ipv4-address-space/
 deny 41.0.0.0/8
 deny 102.0.0.0/8
 deny 105.0.0.0/8
-
-# Holes due to historical reasons
-deny 154.0.0.0 - 154.4.255.255
-# hole for 154.5.0.0/16
-deny 154.6.0.0 - 154.8.47.255
-# hole for 154.8.48.0 - 154.8.255.255
-deny 154.9.0.0/16
-# hole for 154.10.0.0/15
-deny 154.12.0.0 - 154.19.255.255
-# hole for 154.20.0.0/16
-deny 154.21.0.0 - 154.32.255.255
-# hole for 154.33.0.0 - 154.34.255.255
-deny 154.35.0.0 - 154.255.255.255
+deny 154.0.0.0/16
+deny 154.16.0.0/16
+deny 154.65.0.0 - 154.255.255.255
 deny 196.0.0.0/16
 deny 196.1.0.0/24
 # hole for 196.1.1.0/24
