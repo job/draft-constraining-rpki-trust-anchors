@@ -1,5 +1,6 @@
 # From https://www.iana.org/assignments/ipv6-unicast-address-assignments
 allow 2001:200::/23
+allow 2001:7fa::/32          # APNIC-AP-IX-ASSIGNMENT
 allow 2001:c00::/23
 allow 2001:e00::/23
 allow 2001:4400::/23
