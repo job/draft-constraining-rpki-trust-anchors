@@ -17,7 +17,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="info"
-     docName="draft-snijders-constraining-rpki-trust-anchors-02"
+     docName="draft-snijders-constraining-rpki-trust-anchors-03"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
@@ -173,7 +173,7 @@
         The APNIC policy development community has not developed <xref target="APNIC-interrir">policy</xref> to support inter-RIR IPv6 transfers.
       </t>
       <t anchor="LACNIC-policy">
-        The LACNIC policy development community has not developed <xref target="LACNIC-interrir">policy</xref> to support inter-RIR IPv6 transfers.
+        The LACNIC policy development community has not developed <xref target="LACNIC-interrir">policy</xref> to support inter-RIR IPv6 or ASN transfers.
       </t>
       <t anchor="RIPE-policy">
         The RIPE NCC policy development community has not developed <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers.
@@ -403,7 +403,8 @@
         <name>Constraints applicable to ARIN's Trust Anchor</name>
         <t>
           Most of the below constraints relate to IP addresses and ASNs which are not globally unique and not managed by any RIR, as such these INRs are not expected to appear subordinate to any publicly-trusted Trust Anchor.
-          Additionally, since inter-RIR transfers involving ARIN may not include IPv6 addresses; ARIN's Trust Anchor is constrained to just its own IANA allocated IPv6 blocks.
+          LACNIC ASNs cannot be transferred to ARIN.
+          Finally, since inter-RIR transfers involving ARIN may not include IPv6 addresses; ARIN's Trust Anchor is constrained to just its own IANA allocated IPv6 blocks.
         </t>
         <t>
           By placing the below content in a file named <strong>arin.constraints</strong>; the associated Trust Anchor reachable via <strong>arin.tal</strong> is constrained such that any EE certificates listing private-use INRs, or non-ARIN IPv6 blocks, or AFRINIC superblocks, are considered invalid.
@@ -414,7 +415,7 @@
       <section numbered="false" toc="include" anchor="apnic">
         <name>Constraints applicable to APNIC's Trust Anchor</name>
         <t>
-          Given that ARIN, LACNIC, and RIPE IPv6 resources cannot be transferred to APNIC, only APNIC IPv6 resources should appear subordinate to APNIC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC Trust Anchor.
+          Given that ARIN, LACNIC, and RIPE NCC IPv6 resources cannot be transferred to APNIC, only APNIC IPv6 resources should appear subordinate to APNIC's Trust Anchor, private use INRs are not managed by any RIR, LACNIC ASNs cannot be transferred, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC Trust Anchor.
         </t>
         <t>
           By placing the below content in files named <strong>apnic.constraints</strong>; the associated Trust Anchor reachable via <strong>apnic.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
@@ -425,7 +426,7 @@
       <section numbered="false" toc="include" anchor="lacnic">
         <name>Constraints applicable to LACNIC's Trust Anchor</name>
         <t>
-          Given that ARIN, APNIC, and RIPE IPv6 resources cannot be transferred to LACNIC, only LACNIC IPv6 resources should appear subordinate to LACNIC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to LACNIC Trust Anchor.
+          Given that Autonomous System Numbers &amp; IPv6 resources cannot be transferred from ARIN, APNIC, and RIPE NCC to LACNIC, only LACNIC ASNs &amp; IPv6 resources should appear subordinate to LACNIC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to LACNIC Trust Anchor.
         </t>
         <t>
           By placing the below content in files named <strong>lacnic.constraints</strong>; the associated Trust Anchor reachable via <strong>lacnic.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
@@ -436,7 +437,7 @@
       <section numbered="false" toc="include" anchor="ripe">
         <name>Constraints applicable to LACNIC's Trust Anchor</name>
         <t>
-          Given that ARIN, APNIC, and LACNIC IPv6 resources cannot be transferred to RIPE NCC, only RIPE NCC IPv6 resources should appear subordinate to RIPE NCC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to RIPE NCC Trust Anchor.
+          Given that ARIN, APNIC, and LACNIC IPv6 resources cannot be transferred to RIPE NCC, only RIPE NCC IPv6 resources should appear subordinate to RIPE NCC's Trust Anchor, LACNIC ASNs cannot be transferred, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to RIPE NCC Trust Anchor.
         </t>
         <t>
           By placing the below content in files named <strong>ripe.constraints</strong>; the associated Trust Anchor reachable via <strong>ripe.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
