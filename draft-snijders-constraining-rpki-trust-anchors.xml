@@ -17,7 +17,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="info"
-     docName="draft-snijders-constraining-rpki-trust-anchors-03"
+     docName="draft-snijders-constraining-rpki-trust-anchors-04"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
@@ -176,7 +176,7 @@
         The LACNIC policy development community has not developed <xref target="LACNIC-interrir">policy</xref> to support inter-RIR IPv6 or ASN transfers.
       </t>
       <t anchor="RIPE-policy">
-        The RIPE NCC policy development community has not developed <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers.
+        The RIPE NCC policy development community <em>did</em> develop <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers, but being the <em>only</em> community to have done so, inter-RIR transfers are not possible.
       </t>
       <t anchor="AFRINIC-policy">
         AFRINIC has not ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
@@ -450,7 +450,7 @@
    <section anchor="acknowledgements" numbered="false" toc="include">
      <name>Acknowledgements</name>
      <t>
-       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, and Tom Scholl for their feedback and input.
+       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, Tom Scholl, and Erik Bais for their feedback and input.
      </t>
    </section>
 
