@@ -30,8 +30,6 @@
       Constraining RPKI Trust Anchors
     </title>
 
-    <seriesInfo name="Internet-Draft" value="draft-snijders-constraining-rpki-trust-anchors"/>
-
     <author fullname="Job Snijders" initials="J." surname="Snijders">
       <organization>Fastly</organization>
       <address>
