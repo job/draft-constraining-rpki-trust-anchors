@@ -88,7 +88,7 @@
           <dt>Assumed Trust</dt>
           <dd>
             In the RPKI hierarchical structure, a Trust Anchor is an authority for which trust is assumed and not derived.
-            Assuming trust means that violation of that trust is out-of-scope for the threat model.
+            Assumed trust means that violation of that trust is out-of-scope for the threat model.
           </dd>
           <dt>Derived Trust</dt>
           <dd>
