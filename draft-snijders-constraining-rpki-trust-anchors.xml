@@ -31,12 +31,12 @@
     </title>
 
     <author fullname="Job Snijders" initials="J." surname="Snijders">
-      <organization>Fastly</organization>
+      <organization />
       <address>
         <postal>
           <country>NL</country>
         </postal>
-        <email>job@fastly.com</email>
+        <email>job@sobornost.net</email>
       </address>
     </author>
 
