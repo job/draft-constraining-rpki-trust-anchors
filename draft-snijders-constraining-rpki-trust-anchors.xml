@@ -433,7 +433,7 @@
       </section>
 
       <section numbered="false" toc="include" anchor="ripe">
-        <name>Constraints applicable to RIPE's Trust Anchor</name>
+        <name>Constraints applicable to RIPE NCC's Trust Anchor</name>
         <t>
           Given that ARIN, APNIC, and LACNIC IPv6 resources cannot be transferred to RIPE NCC, only RIPE NCC IPv6 resources should appear subordinate to RIPE NCC's Trust Anchor, LACNIC ASNs cannot be transferred, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to RIPE NCC Trust Anchor.
         </t>
