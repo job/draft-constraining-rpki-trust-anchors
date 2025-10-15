@@ -64,8 +64,9 @@
 
     <abstract>
       <t>
-        This document describes an approach for Resource Public Key Infrastructure (RPKI) Relying Parties (RPs) to impose locally configured Constraints on cryptographic products subordinate to publicly-trusted Trust Anchors (TAs), as implemented in OpenBSD's rpki-client validator.
+        This document describes an approach for Resource Public Key Infrastructure (RPKI) Relying Parties (RPs) to impose locally configured Constraints on cryptographic products subordinate to Trust Anchors (TAs).
         The ability to constrain a Trust Anchor operator's effective signing authority to a limited set of Internet Number Resources (INRs) allows Relying Parties to enjoy the potential benefits of assuming trust - within a bounded scope.
+        The specified approach and configuration format allow RPKI operators to communicate efficiently about observations related to Trust Anchor operations.
       </t>
     </abstract>
   </front>
@@ -74,8 +75,9 @@
     <section anchor="intro">
       <name>Introduction</name>
       <t>
-         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relying Parties (RPs) to impose locally configured Constraints on cryptographic products subordinate to publicly-trusted Trust Anchors (TAs), as implemented in the <xref target="OpenBSD"/> <xref target="rpki-client"/> validator.
+         This document describes an approach for Resource Public Key Infrastructure (RPKI) Relying Parties (RPs) to impose locally configured Constraints on cryptographic products subordinate to trusted Trust Anchors (TAs).
         The ability to constrain a Trust Anchor operator's effective signing authority to a limited set of Internet Number Resources (INRs) allows Relying Parties to enjoy the potential benefits of assuming trust - within a bounded scope.
+        The specified approach and configuration format allow RPKI operators to communicate efficiently about observations related to Trust Anchor operations.
       </t>
       <t>
         It is important to emphasize that each Relying Party makes its Trust Anchor inclusion decisions independently, on its own timelines, based on its own inclusion criteria; and that imposed Constraints (if any) are a matter of local configuration.
@@ -141,7 +143,7 @@
     <section anchor="constraining">
       <name>Constraining Trust Anchors by constraining End-Entity Certificates</name>
       <t>
-        As noted in <xref target="overclaim"/>, publicly-trusted RPKI TA certificates are expected to overclaim in the course of normal operations.
+        As noted in <xref target="overclaim"/>, the current set of publicly-trusted RPKI TA certificates are expected to overclaim in the course of normal operations.
         However, applying a bespoke implementation of the certification path validation algorithm to CA certificates to prune all possible certificate paths related to INRs not contained within the locally configured Constraints would not be a trivial task.
         Instead, an alternative and simpler approach operating on EE certificates is proposed.
       </t>
@@ -209,18 +211,11 @@
   </middle>
 
   <back>
+
     <references>
       <name>References</name>
       <references>
         <name>Informative References</name>
-
-        <reference anchor="OpenBSD" target="https://www.openbsd.org/">
-          <front>
-            <title>The OpenBSD Project</title>
-            <author initials="T" surname="de Raadt" fullname="Theo de Raadt"/>
-            <date year="2023" />
-          </front>
-        </reference>
 
         <reference anchor="rpki-client" target="https://www.rpki-client.org/">
           <front>
@@ -391,6 +386,13 @@
       </section>
 
    </section>
+
+    <section>
+      <name>Implementation Status</name>
+      <t>
+        The approach specified in this document has been implemented in <xref target="rpki-client"/> and has been enabled by default in releases since 2023.
+      </t>
+    </section>
 
    <section anchor="acknowledgements" numbered="false" toc="include">
      <name>Acknowledgements</name>
