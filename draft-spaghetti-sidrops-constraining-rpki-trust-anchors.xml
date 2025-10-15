@@ -16,12 +16,13 @@
 <?rfc subcompact="no"?>
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
-     category="info"
-     docName="draft-snijders-constraining-rpki-trust-anchors-08"
+     category="std"
+     docName="draft-spaghetti-sidrops-constraining-rpki-trust-anchors-00"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
-     submissionType="independent"
+     submissionType="IETF"
+     consensus="true"
      version="3">
 
   <front>
@@ -31,12 +32,14 @@
     </title>
 
     <author fullname="Job Snijders" initials="J." surname="Snijders">
-      <organization />
+      <organization abbrev="BSD">BSD Software Development</organization>
       <address>
         <postal>
+          <city>Amsterdam</city>
           <country>NL</country>
         </postal>
-        <email>job@sobornost.net</email>
+        <email>job@bsd.nl</email>
+        <uri>https://www.bsd.nl/</uri>
       </address>
     </author>
 
@@ -147,10 +150,10 @@
         If a given EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing and consider the EE certificate invalid.
       </t>
       <t>
-        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="I-D.ietf-sidrops-rfc6482bis"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="I-D.ietf-opsawg-9092-update"/>.
+        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="RFC9582"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="RFC9632"/>.
       </t>
       <t>
-        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements); such as Ghostbusters records <xref target="RFC6493"/>, Signed TALs <xref target="I-D.ietf-sidrops-signed-tal"/>, and Manifests <xref target="RFC9286"/>.
+        The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements); such as Ghostbusters records <xref target="RFC6493"/>, Signed TALs <xref target="RFC9691"/>, and Manifests <xref target="RFC9286"/>.
       </t>
       <t>
         The validation of Constraint containment is a check in addition to all the validation checks specified in <xref target="RFC6487"/>, <xref target="RFC6488"/>, and each Signed Object's profile specification.
@@ -189,7 +192,7 @@
         In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
       </t>
       <t>
-        The aforementioned observations suggest there is a lot of operational runway to manage and distribute Trust Anchor Constraints in a timely manner.
+        It is clear from the aforementioned observations that, while here are sound reasons to declare 'all resources' as subordinate (<xref target="I-D.rir-rpki-allres-ta-app-statement"/>), there are resources which would never be subordinate to any particular Regional Internet Registry in the normal course of operations.
         Maintainers of Constraint lists disseminated as part of an operating system or a third-party software package release process would do well to assume a six month delay for users to update.
       </t>
     </section>
@@ -233,16 +236,8 @@
         <!-- anchor I-D.rir-rpki-allres-ta-app-statement -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.rir-rpki-allres-ta-app-statement.xml"/>
 
-        <!-- anchor I-D.ietf-sidrops-rfc6482bis -->
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-rfc6482bis.xml"/>
-
         <!-- anchor I-D.ietf-sidrops-aspa-profile -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-aspa-profile.xml"/>
-
-        <!-- anchor I-D.ietf-opsawg-9092-update -->
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-opsawg-9092-update.xml"/>
-
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-signed-tal.xml"/>
 
         <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/policy/proposals/2020-gen-006-d3">
           <front>
@@ -367,6 +362,9 @@
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8211.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9286.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9323.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9582.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9632.xml"/>
+        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9691.xml"/>
 
       </references>
     </references>
@@ -374,8 +372,7 @@
     <section anchor="constraints">
       <name>Example listings of Constraints</name>
       <t>
-        This section contains examples of Constraints listings related to ARIN &amp; AFRINIC managed INRs, and INRs allocated for private or non-public use.
-        Constraint suggestions are offered specific to each of the five RIR Trust Anchors.
+        This section contains an example Constraints listings.
       </t>
       <t>
         As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than merely using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
@@ -385,62 +382,12 @@
         The ordering of entries is not significant.
       </t>
 
-      <section numbered="false" toc="include" anchor="afrinic">
-        <name>Constraints applicable to AFRINIC's Trust Anchor</name>
+      <section numbered="false" toc="include" anchor="example">
+        <name>Constraints applicable to an Example Trust Anchor</name>
         <t>
-          The below listing is intended to be an exhaustive list of Constraints related to AFRINIC-managed Internet Number Resources.
-          Inter-RIR resource transfers aren't possible into and out of the AFRINIC registry.
+          By placing the below contents in a file named <strong>example.constraints</strong> next to a Trust Anchor Locator file named <strong>example.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>example.constraints</strong> file.
         </t>
-        <t>
-          By placing the below contents in a file named <strong>afrinic.constraints</strong> next to a Trust Anchor Locator file named <strong>afrinic.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>afrinic.constraints</strong> file.
-        </t>
-        <sourcecode type="text" src="afrinic.constraints"/>
-      </section>
-
-      <section numbered="false" toc="include" anchor="arin">
-        <name>Constraints applicable to ARIN's Trust Anchor</name>
-        <t>
-          Most of the below constraints relate to IP addresses and ASNs which are not globally unique and not managed by any RIR, as such these INRs are not expected to appear subordinate to any publicly-trusted Trust Anchor.
-          LACNIC ASNs cannot be transferred to ARIN.
-          Finally, since inter-RIR transfers involving ARIN may not include IPv6 addresses; ARIN's Trust Anchor is constrained to just its own IANA allocated IPv6 blocks.
-        </t>
-        <t>
-          By placing the below content in a file named <strong>arin.constraints</strong>; the associated Trust Anchor reachable via <strong>arin.tal</strong> is constrained such that any EE certificates listing private-use INRs, or non-ARIN IPv6 blocks, or AFRINIC superblocks, are considered invalid.
-        </t>
-        <sourcecode type="text" src="arin.constraints"/>
-      </section>
-
-      <section numbered="false" toc="include" anchor="apnic">
-        <name>Constraints applicable to APNIC's Trust Anchor</name>
-        <t>
-          Given that ARIN, LACNIC, and RIPE NCC IPv6 resources cannot be transferred to APNIC, only APNIC IPv6 resources should appear subordinate to APNIC's Trust Anchor, private use INRs are not managed by any RIR, LACNIC ASNs cannot be transferred, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to APNIC Trust Anchor.
-        </t>
-        <t>
-          By placing the below content in files named <strong>apnic.constraints</strong>; the associated Trust Anchor reachable via <strong>apnic.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
-        </t>
-        <sourcecode type="text" src="apnic.constraints"/>
-      </section>
-
-      <section numbered="false" toc="include" anchor="lacnic">
-        <name>Constraints applicable to LACNIC's Trust Anchor</name>
-        <t>
-          Given that Autonomous System Numbers &amp; IPv6 resources cannot be transferred from ARIN, APNIC, and RIPE NCC to LACNIC, only LACNIC ASNs &amp; IPv6 resources should appear subordinate to LACNIC's Trust Anchor, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to LACNIC Trust Anchor.
-        </t>
-        <t>
-          By placing the below content in files named <strong>lacnic.constraints</strong>; the associated Trust Anchor reachable via <strong>lacnic.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
-        </t>
-        <sourcecode type="text" src="lacnic.constraints"/>
-      </section>
-
-      <section numbered="false" toc="include" anchor="ripe">
-        <name>Constraints applicable to RIPE NCC's Trust Anchor</name>
-        <t>
-          Given that ARIN, APNIC, and LACNIC IPv6 resources cannot be transferred to RIPE NCC, only RIPE NCC IPv6 resources should appear subordinate to RIPE NCC's Trust Anchor, LACNIC ASNs cannot be transferred, private use INRs are not managed by any RIR, and AFRINIC resources of any type cannot be transferred to and from any other RIR; the below constraints can be applied to RIPE NCC Trust Anchor.
-        </t>
-        <t>
-          By placing the below content in files named <strong>ripe.constraints</strong>; the associated Trust Anchor reachable via <strong>ripe.tal</strong> is constrained such that any EE certificates or Signed Objects related to out-of-scope resources are considered invalid.
-        </t>
-        <sourcecode type="text" src="ripe.constraints"/>
+        <sourcecode type="text" src="example.constraints"/>
       </section>
 
    </section>
@@ -448,7 +395,7 @@
    <section anchor="acknowledgements" numbered="false" toc="include">
      <name>Acknowledgements</name>
      <t>
-       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, Tom Scholl, Erik Bais, and Simon Leinen for their feedback and input.
+       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, Tom Scholl, Erik Bais, Simon Leinen, and Nick Hilliard for their feedback and input.
      </t>
    </section>
 
