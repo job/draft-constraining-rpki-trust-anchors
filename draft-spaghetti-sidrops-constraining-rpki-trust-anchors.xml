@@ -385,7 +385,7 @@
       <section numbered="false" toc="include" anchor="example">
         <name>Constraints applicable to an Example Trust Anchor</name>
         <t>
-          By placing the below contents in a file named <strong>example.constraints</strong> next to a Trust Anchor Locator file named <strong>example.tal</strong>, the <xref target="rpki-client"/> implementation will consider all End-Entity certificates invalid which list resources not fully contained within the resources listed in the <strong>example.constraints</strong> file.
+          If the below content is placed in a file named <strong>example.constraints</strong> next to a Trust Anchor Locator file named <strong>example.tal</strong>, the <xref target="rpki-client"/> implementation will only accept an End-Entity certificate subordinate to <strong>example.tal</strong> if all its resources are fully contained within the resources allowed in <strong>example.constraints</strong>.
         </t>
         <sourcecode type="text" src="example.constraints"/>
       </section>
