@@ -1,0 +1,30 @@
+# Example constraints following the format described in
+# fdraft-spaghetti-sidrops-constraining-rpki-trust-anchors
+
+# This is a comment
+
+allow 10.0.0.0/8      # comments may follow entries
+
+allow 192.168.0.0/12
+deny 192.168.1.0/24   # carve a hole in the above entry
+
+allow 192.0.2.0/24
+
+allow 100.64.0.0 - 100.127.255.254 # this is a range
+allow 203.0.113.0 - 203.0.113.255  # this too
+
+allow 3fff::/20       # IPv6 is also supported
+deny 3fff::/48
+
+deny 2001:db8:: - 2001:db8::ffff # an IPv6 range
+
+# From https://www.iana.org/assignments/as-numbers/
+allow 64496 - 64511
+deny 65123           # carve a hole in the above entry
+
+allow 65536          # can declare for single ASN
+
+deny 4200000000 - 4294967294
+
+# There is an implicit deny for all resources which were not
+# explicitly allowed through 'allow' declarations.
