@@ -192,7 +192,7 @@
         In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
       </t>
       <t>
-        It is clear from the aforementioned observations that, while here are sound reasons to declare 'all resources' as subordinate (<xref target="I-D.rir-rpki-allres-ta-app-statement"/>), there are resources which would never be subordinate to any particular Regional Internet Registry in the normal course of operations.
+        It is clear from the aforementioned observations that, while there are sound reasons to declare 'all resources' as subordinate (<xref target="I-D.rir-rpki-allres-ta-app-statement"/>), there are resources which would never be subordinate to any particular Regional Internet Registry in the normal course of operations.
         Maintainers of Constraint lists disseminated as part of an operating system or a third-party software package release process would do well to assume a six month delay for users to update.
       </t>
     </section>
@@ -370,9 +370,9 @@
     </references>
 
     <section anchor="constraints">
-      <name>Example listings of Constraints</name>
+      <name>Example listing of Constraints</name>
       <t>
-        This section contains an example Constraints listings.
+        This section contains an example Constraints listing.
       </t>
       <t>
         As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than merely using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
