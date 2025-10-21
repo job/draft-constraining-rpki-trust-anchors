@@ -1,4 +1,4 @@
-NAME=draft-spaghetti-sidrops-constraining-rpki-trust-anchors
+NAME=draft-snij-sidrops-constraining-rpki-trust-anchors
 LAST_UPLOADED=02
 
 .PHONY: all
