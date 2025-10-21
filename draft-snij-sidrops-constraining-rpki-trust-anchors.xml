@@ -162,6 +162,22 @@
       </t>
     </section>
 
+    <section anchor="configformat">
+      <name>Constraints Configuration Format</name>
+      <t>
+        As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than merely using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
+      </t>
+      <ul>
+        <li>Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries (entries prefixed with <strong>allow</strong>).</li>
+        <li>Denylist entries may not overlap with other denylist entries.</li>
+        <li>Allowlist entries may not overlap with other allowlist entries.</li>
+        <li>The ordering of entries is not significant.</li>
+      </ul>
+      <t>
+        An example is available in <xref target="example"/>.
+      </t>
+    </section>
+
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
@@ -364,34 +380,31 @@
       </references>
     </references>
 
-    <section anchor="constraints">
-      <name>Example listing of Constraints</name>
-      <t>
-        This section contains an example Constraints listing.
-      </t>
-      <t>
-        As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than merely using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
-        Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries (entries prefixed with <strong>allow</strong>).
-        Denylist entries may not overlap with other denylist entries.
-        Allowlist entries may not overlap with other allowlist entries.
-        The ordering of entries is not significant.
-      </t>
-
-      <section numbered="false" toc="include" anchor="example">
-        <name>Constraints applicable to an Example Trust Anchor</name>
-        <t>
-          If the below content is placed in a file named <strong>example.constraints</strong> next to a Trust Anchor Locator file named <strong>example.tal</strong>, the <xref target="rpki-client"/> implementation will only accept an End-Entity certificate subordinate to <strong>example.tal</strong> if all its resources are fully contained within the resources allowed in <strong>example.constraints</strong>.
-        </t>
-        <sourcecode type="text" src="example.constraints"/>
-      </section>
-
-   </section>
-
-    <section>
+    <section removeInRFC="true">
       <name>Implementation Status</name>
+      <t>
+         This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 7942.
+         The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs.
+         Please note that the listing of any individual implementation here does not imply endorsement by the IETF.
+         Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors.
+         This is not intended as, and must not be construed to be, a catalog of available implementations or their features.
+         Readers are advised to note that other implementations may exist.
+      </t>
+      <t>
+        According to RFC 7942, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature.
+        It is up to the individual working groups to use this information as they see fit".
+      </t>
       <t>
         The approach specified in this document has been implemented in <xref target="rpki-client"/> and has been enabled by default in releases since 2023.
       </t>
+    </section>
+
+    <section toc="include" anchor="example">
+      <name>Constraints applicable to an Example Trust Anchor</name>
+      <t>
+        If the below content is placed in a file named <strong>example.constraints</strong> next to a Trust Anchor Locator file named <strong>example.tal</strong>, the <xref target="rpki-client"/> implementation will only accept an End-Entity certificate subordinate to <strong>example.tal</strong> if all its resources are fully contained within the resources allowed in <strong>example.constraints</strong>.
+      </t>
+      <sourcecode type="text" src="example.constraints"/>
     </section>
 
    <section anchor="acknowledgements" numbered="false" toc="include">
