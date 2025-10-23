@@ -17,7 +17,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="std"
-     docName="draft-snij-sidrops-constraining-rpki-trust-anchors-00"
+     docName="draft-snij-sidrops-constraining-rpki-trust-anchors-01"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
@@ -111,6 +111,10 @@
         <name>Required Reading</name>
         <t>
           Readers should be familiar with the RPKI, the RPKI repository structure, and the various RPKI objects, uses, and interpretations described in the following: <xref target="RFC3779"/>, <xref target="RFC6480"/>, <xref target="RFC6481"/>, <xref target="RFC6487"/>, and <xref target="RFC6488"/>.
+        </t>
+        <t>
+          A process to construct and sign RPKI Trust Anchor constraints is specified in <xref target="I-D.nro-sidrops-ta-constraints"/>.
+          Such signed distributed constraints can serve as an input to the methodology specified in this document.
         </t>
       </section>
 
@@ -243,6 +247,9 @@
             <date month="July" year="2023" />
           </front>
         </reference>
+
+        <!-- anchor I-D.nro-sidrops-ta-constraints -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.nro-sidrops-ta-constraints.xml"/>
 
         <!-- anchor I-D.rir-rpki-allres-ta-app-statement -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.rir-rpki-allres-ta-app-statement.xml"/>
