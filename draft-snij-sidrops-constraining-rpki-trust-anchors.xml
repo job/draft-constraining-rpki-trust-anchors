@@ -182,6 +182,14 @@
       </t>
     </section>
 
+    <section anchor="asn1">
+      <name>Expressing Trust Anchor constraints using ASN.1</name>
+      <t>
+        The following ASN.1 syntax can be used to store <tt>Allowlist</tt> and <tt>Denylist</tt> entries in a binary format.
+      </t>
+      <sourcecode type="asn1" src="Constraints.asn1"/>
+    </section>
+
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>

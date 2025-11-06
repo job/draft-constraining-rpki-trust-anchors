@@ -1,0 +1,49 @@
+RpkiTrustAnchorConstraints-2025
+  { iso(1) member-body(2) us(840) rsadsi(113549)
+    pkcs(1) pkcs9(9) smime(16) mod(0) id-mod-rpkiTAC-2025(TBD) }
+
+DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+IMPORTS
+  CONTENT-TYPE, Digest, DigestAlgorithmIdentifier, SubjectKeyIdentifier
+  FROM CryptographicMessageSyntax-2010 -- in [RFC6268]
+    { iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1)
+      pkcs-9(9) smime(16) modules(0) id-mod-cms-2009(58) }
+
+  ResourceBlock
+  FROM RpkiSignedChecklist-2022 -- in [RFC9323]
+  { iso(1) member-body(2) us(840) rsadsi(113549)
+    pkcs(1) pkcs9(9) smime(16) mod(0)
+    id-mod-rpkiSignedChecklist-2022(73) }
+  ;
+
+EncapsulatedContentInfo ::= SEQUENCE {
+  eContentType      CONTENT-TYPE.&id({ContentSet}),
+  eContent      [0] EXPLICIT OCTET STRING
+    (CONTAINING CONTENT-TYPE.&Type({ContentSet}{@eContentType})) OPTIONAL }
+
+ContentSet CONTENT-TYPE ::= {
+  ct-rpkiTrustAnchorConstraints, ... }
+
+ct-rpkiTrustAnchorConstraints CONTENT-TYPE ::=
+  { TYPE RpkiTrustAnchorConstraints
+    IDENTIFIED BY id-ct-rpkiTrustAnchorConstraints }
+
+id-ct-rpkiTrustAnchorConstraints OBJECT IDENTIFIER ::=
+  { iso(1) identified-organization(3) dod(6) internet(1) private(4)
+    enterprise(1) snijders(41948) constraints(900) }
+
+RpkiTrustAnchorConstraints ::= SEQUENCE {
+  version     [0] INTEGER DEFAULT 0,
+  hashAlg         DigestAlgorithmIdentifier,
+  thisUpdate      GeneralizedTime,
+  constraints     SEQUENCE OF TrustAnchorConstraintSet,
+  hash            Digest }
+
+TrustAnchorConstraintSet ::= SEQUENCE {
+  ski             SubjectKeyIdentifier,
+  allow           ResourceBlock,
+  deny            ResourceBlock OPTIONAL } 
+
+END
