@@ -10,5 +10,8 @@ drafts: $(NAME).txt
 $(NAME).txt: $(NAME).xml
 	xml2rfc $(NAME).xml --html --text --expand --allow-local-file-access
 
+www: $(NAME).txt
+	cp $(NAME).exp.xml $(NAME).html $(NAME).txt ~/Downloads/
+
 clean:
 	rm -f *.html *.txt *.exp.xml
