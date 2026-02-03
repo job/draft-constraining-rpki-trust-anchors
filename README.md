@@ -1,6 +1,6 @@
-# draft-snijders-constraining-rpki-trust-anchors
+# draft-ietf-sidrops-constraining-rpki-trust-anchors
 
-Work in progress repository for Internet-Draft draft-snijders-constraining-rpki-trust-anchors
+Work in progress repository for Internet-Draft draft-ietf-sidrops-constraining-rpki-trust-anchors
 
 ## Usage
 
@@ -8,7 +8,7 @@ Work in progress repository for Internet-Draft draft-snijders-constraining-rpki-
 
 The source files for the Internet-Draft documents are:
 
-- `draft-snijders-constraining-rpki-trust-anchors.xml`
+- `draft-ietf-sidrops-constraining-rpki-trust-anchors.xml`
 
 To regenerate the text and HTML versions after making changes, run:
 
