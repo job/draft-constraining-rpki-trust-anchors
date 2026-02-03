@@ -1,5 +1,5 @@
-NAME=draft-snij-sidrops-constraining-rpki-trust-anchors
-LAST_UPLOADED=02
+NAME=draft-ietf-sidrops-constraining-rpki-trust-anchors
+LAST_UPLOADED=00
 
 .PHONY: all
 all: drafts
