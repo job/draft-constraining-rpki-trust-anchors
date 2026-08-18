@@ -202,9 +202,9 @@
         The RIPE NCC policy development community <em>did</em> develop <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers, but being the <em>only</em> community to have done so, inter-RIR transfers are not possible.
       </t>
       <t anchor="AFRINIC-policy">
-        AFRINIC has not ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/>.
-        The policy proposal indicates implementation is expected to take an additional 12 months after ratification.
-        Since it's not possible to transfer resources into AFRINIC, non-AFRINIC resources should not appear subordinate to AFRINIC's Trust Anchor for the foreseeable future.
+        AFRINIC ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/> in February 2026. 
+		The policy does not support inter-RIR IPv6 transfers and requires that AFRINIC-issued IPv4 resources cannot be transferred out of the region. 
+		The staff assessment indicates that implementation is expected to take 12 months.
       </t>
       <t>
         The RIRs collectively manage only a subset of 0.0.0.0/0 <xref target="IANA-IPV4"/> and 2000::/3 <xref target="IANA-IPV6"/>; and have no authority over any parts of 10.0.0.0/8 <xref target="RFC1918"/>, 2001:db8::/32 <xref target="RFC3849"/>, and AS 64512 - 65534 <xref target="RFC6996"/>, for example.
