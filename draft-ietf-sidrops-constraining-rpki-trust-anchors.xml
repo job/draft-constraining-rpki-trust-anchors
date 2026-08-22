@@ -203,7 +203,7 @@
       </t>
       <t anchor="AFRINIC-policy">
         AFRINIC ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/> in February 2026. 
-		The policy does not support inter-RIR IPv6 transfers and requires that AFRINIC-issued IPv4 resources cannot be transferred out of the region. 
+		The policy does not support inter-RIR IPv6 transfers and stipulates that AFRINIC-issued IPv4 resources cannot be transferred out of the region. 
 		The staff assessment indicates that implementation is expected to take 12 months.
       </t>
       <t>
