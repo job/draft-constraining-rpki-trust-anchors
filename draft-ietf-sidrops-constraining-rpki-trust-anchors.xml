@@ -189,7 +189,7 @@
 	  </t>
 	  <t>
 		The RP must consider any deviation from the constraints configuration format specified above to be an error.
-		If a constraints file contains an error, the RP must reject the entire constraints file and must not check EE certificates against that constraints file.
+		If a constraints file contains an error, the RP must reject the entire constraints file and must not check EE certificates against it.
 	  </t>
 	  <t>
  		The following rules also apply to constraints entries:
