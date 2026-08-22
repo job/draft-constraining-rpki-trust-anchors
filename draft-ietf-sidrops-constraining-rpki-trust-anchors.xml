@@ -182,10 +182,7 @@
 		For an AS identifier range, the first AS identifier must be numerically less than the second AS identifier.
       </t>
 	  <t>
-   		A comment begins with the '#' character.
-  		A line whose first non-whitespace character is '#' is a comment line.
-  		Comments may also follow constraint entries.
-  		In either case, all characters from '#' to the end of the line must be ignored when processing the file.
+   		Comments can be put anywhere in the file using a hash mark ('#') and extend to the end of the current line.
  	  </t>
 	  <t>
         An example is available in <xref target="example"/>.
