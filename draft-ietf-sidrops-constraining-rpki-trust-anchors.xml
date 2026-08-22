@@ -177,9 +177,9 @@
   		Each constraint entry begins with either the <strong>allow</strong> or <strong>deny</strong> keyword, followed by the resource to which the entry applies.
  	  </t>
 	  <t>
-		A resource can be an IPv4 prefix, an IPv6 prefix, an IPv4 address range, an IPv6 address range, a single AS identifier, or an AS identifier range.
-		For an IP address range, the two addresses must belong to the same address family, and the first address must be numerically less than the second address.
-		For an AS identifier range, the first AS identifier must be numerically less than the second AS identifier.
+		A resource can be an IPv4 prefix, an IPv6 prefix, an IPv4 address range, an IPv6 address range, a single AS identifier, or an AS range.
+		Ranges include the end points.
+		The two end points of a range are separated by a hyphen '-' and the numerically lower end point comes first.
       </t>
 	  <t>
    		Comments can be put anywhere in the file using a hash mark ('#') and extend to the end of the current line.
