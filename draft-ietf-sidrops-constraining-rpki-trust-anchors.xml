@@ -171,15 +171,37 @@
       <t>
         As it's clumsy and error prone to calculate the complement of a block of resources, for efficiency a simple notation in the form of <strong>allow</strong> and <strong>deny</strong> keywords is used to indicate INRs which may or may not appear subordinate to a Trust Anchor (rather than merely using lengthy exhaustive allowlists of what INRs may appear under a given Trust Anchor).
       </t>
+	  <t>
+   		The constraints configuration format is line-oriented.
+		Comments can be put anywhere in the file using a hash mark ('#') and extend to the end of the current line.
+  		Each non-empty, non-comment line contains exactly one constraint entry.
+  		Each constraint entry begins with either the <strong>allow</strong> or <strong>deny</strong> keyword, followed by the resource to which the entry applies.
+ 	  </t>
+	  <t>
+		A resource can be an IPv4 prefix, an IPv6 prefix, an IPv4 address range, an IPv6 address range, a single AS identifier, or an AS range.
+		Ranges include the end points.
+		The two end points of a range are separated by a hyphen '-' and the numerically lower end point comes first.
+      </t>
+	  <t>
+        An example is available in <xref target="example"/>.
+	  </t>
+	  <t>
+		The RP must consider any deviation from the constraints configuration format specified above to be an error.
+		If a constraints file contains an error, the RP must reject the entire constraints file and must not check EE certificates against it.
+	  </t>
+	  <t>
+ 		The following rules also apply to constraints entries:
+	  </t>
       <ul>
-        <li>Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries (entries prefixed with <strong>allow</strong>).</li>
+		<li>Denylist entries (entries prefixed with <strong>deny</strong>) take precedence over allowlist entries (entries prefixed with <strong>allow</strong>).</li>
         <li>Denylist entries may not overlap with other denylist entries.</li>
         <li>Allowlist entries may not overlap with other allowlist entries.</li>
         <li>The ordering of entries is not significant.</li>
       </ul>
-      <t>
-        An example is available in <xref target="example"/>.
-      </t>
+	  <t>
+		There is an implicit deny for all resources that are not explicitly permitted by an allow entry.
+		In other words, the set of resources allowed by a constraints file is the union of the resources specified by all <strong>allow</strong> entries, excluding the union of the resources specified by all <strong>deny</strong> entries.
+	  </t>
     </section>
 
     <section anchor="ops">
