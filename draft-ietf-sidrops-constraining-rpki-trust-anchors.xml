@@ -173,6 +173,7 @@
       </t>
 	  <t>
    		The constraints configuration format is line-oriented.
+		Comments can be put anywhere in the file using a hash mark ('#') and extend to the end of the current line.
   		Each non-empty, non-comment line contains exactly one constraint entry.
   		Each constraint entry begins with either the <strong>allow</strong> or <strong>deny</strong> keyword, followed by the resource to which the entry applies.
  	  </t>
@@ -181,9 +182,6 @@
 		Ranges include the end points.
 		The two end points of a range are separated by a hyphen '-' and the numerically lower end point comes first.
       </t>
-	  <t>
-   		Comments can be put anywhere in the file using a hash mark ('#') and extend to the end of the current line.
- 	  </t>
 	  <t>
         An example is available in <xref target="example"/>.
 	  </t>
