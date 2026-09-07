@@ -53,6 +53,16 @@
       </address>
     </author>
 
+    <author fullname="Lancheng Qin" initials="L." surname="Qin">
+      <organization>Zhongguancun Laboratory</organization>
+      <address>
+        <postal>
+          <country>CN</country>
+        </postal>
+        <email>qinlc@mail.zgclab.edu.cn</email>
+      </address>
+    </author>
+
     <date />
 
     <area>ops</area>
@@ -152,7 +162,7 @@
         Instead, an alternative and simpler approach operating on EE certificates is proposed.
       </t>
       <t>
-        To constrain a Trust Anchor, the IP address and AS number resources listed in a given EE certificate's <xref target="RFC3779"/> extensions MUST be fully contained within the locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
+        To constrain a Trust Anchor, the IP address and AS number resources listed in a given EE certificate's <xref target="RFC3779"/> extensions must be fully contained within the locally configured union set of IP prefixes, IP address ranges, AS identifiers, and AS identifier ranges for which the Relying Party operator anticipates the Trust Anchor operator to issue cryptographic products.
         If a given EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing and consider the EE certificate invalid.
       </t>
       <t>
@@ -183,8 +193,9 @@
 		The two end points of a range are separated by a hyphen '-' and the numerically lower end point comes first.
       </t>
 	  <t>
-        An example is available in <xref target="example"/>.
+        An example is:
 	  </t>
+	  <sourcecode type="text" src="example.constraints"/>
 	  <t>
 		The RP must consider any deviation from the constraints configuration format specified above to be an error.
 		If a constraints file contains an error, the RP must reject the entire constraints file and must not check EE certificates against it.
@@ -208,35 +219,10 @@
       <name>Operational Considerations</name>
       <t>
         When assessing the feasibility of constraining a Trust Anchor's effective signing abilities to the registry's current set of holdings, it is important to take note of existing policies (or lack thereof) and possible future events which might impact the degree of churn in the registry's holdings.
-        Examples are:
-      </t>
-      <t anchor="ARIN-policy">
-        The ARIN policy development community abandoned a proposal to allow inter-regional IPv6 resource transfers <xref target="ARIN-2019-4"/>.
-        Since it's currently not possible to transfer IPv6 resources from ARIN to any other RIR, ARIN's IANA-allocated IPv6 resources should not appear subordinate to any Trust Anchor other than ARIN's own Trust Anchor.
-      </t>
-      <t anchor="APNIC-policy">
-        The APNIC policy development community has not developed <xref target="APNIC-interrir">policy</xref> to support inter-RIR IPv6 transfers.
-      </t>
-      <t anchor="LACNIC-policy">
-        The LACNIC policy development community has not developed <xref target="LACNIC-interrir">policy</xref> to support inter-RIR IPv6 or ASN transfers.
-      </t>
-      <t anchor="RIPE-policy">
-        The RIPE NCC policy development community <em>did</em> develop <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers, but being the <em>only</em> community to have done so, inter-RIR transfers are not possible.
-      </t>
-      <t anchor="AFRINIC-policy">
-        AFRINIC ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/> in February 2026. 
-		The policy does not support inter-RIR IPv6 transfers and stipulates that AFRINIC-issued IPv4 resources cannot be transferred out of the region. 
-		The staff assessment indicates that implementation is expected to take 12 months.
+        Examples of these considerations are provided in <xref target="examples"/>.
       </t>
       <t>
-        The RIRs collectively manage only a subset of 0.0.0.0/0 <xref target="IANA-IPV4"/> and 2000::/3 <xref target="IANA-IPV6"/>; and have no authority over any parts of 10.0.0.0/8 <xref target="RFC1918"/>, 2001:db8::/32 <xref target="RFC3849"/>, and AS 64512 - 65534 <xref target="RFC6996"/>, for example.
-        Since it's not possible to transfer private internet allocations, documentation prefixes, or private use ASNs into an RIR's management, such resources should not appear subordinate to any RIR's Trust Anchor.
-      </t>
-      <t>
-        In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
-      </t>
-      <t>
-        It is clear from the aforementioned observations that, while there are sound reasons to declare 'all resources' as subordinate (<xref target="I-D.rir-rpki-allres-ta-app-statement"/>), there are resources which would never be subordinate to any particular Regional Internet Registry in the normal course of operations.
+        While there are sound reasons to declare 'all resources' as subordinate (<xref target="I-D.rir-rpki-allres-ta-app-statement"/>), there are resources which would never be subordinate to any particular Regional Internet Registry in the normal course of operations.
         Maintainers of Constraint lists disseminated as part of an operating system or a third-party software package release process would do well to assume a six month delay for users to update.
       </t>
     </section>
@@ -247,6 +233,13 @@
         The routing security benefits promised by the RPKI are derived from assuming trust in registry operators to run flawless certification services.
         Assuming such trust exposes users to some potential for <xref target="risks"/> and adverse actions by Certificate Authorities <xref target="RFC8211"/>.
         Restricting a Trust Anchor's effective signing abilities to its respective registry's current holdings - rather assuming unbounded trust in such authorities - is a constructive approach to limit some potential for risk.
+      </t>
+    </section>
+
+    <section anchor="iana">
+      <name>IANA Considerations</name>
+      <t>
+        This document has no IANA actions.
       </t>
     </section>
 
@@ -269,6 +262,13 @@
             <date month="July" year="2023" />
           </front>
         </reference>
+        
+		<reference anchor="panda-rpki" target="https://panda-rpki.cn/">
+          <front>
+            <title>panda-rpki</title>
+            <date month="september" year="2026" />
+          </front>
+        </reference>
 
         <!-- anchor I-D.nro-sidrops-ta-constraints -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.nro-sidrops-ta-constraints.xml"/>
@@ -279,7 +279,7 @@
         <!-- anchor I-D.ietf-sidrops-aspa-profile -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-sidrops-aspa-profile.xml"/>
 
-        <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/policy/proposals/2020-gen-006-d3">
+        <reference anchor="AFPUB-2020-GEN-006-DRAFT03" target="https://afrinic.net/afpub-2020-gen-006-draft03.html">
           <front>
             <title>AFRINIC Number Resources Transfer Policy (Draft-3)</title>
             <author fullname="Gregoire Olaotan Ehoumi"/>
@@ -423,16 +423,37 @@
         It is up to the individual working groups to use this information as they see fit".
       </t>
       <t>
-        The approach specified in this document has been implemented in <xref target="rpki-client"/> and has been enabled by default in releases since 2023.
+        The approach specified in this document has been implemented in <xref target="rpki-client"/> and <xref target="panda-rpki"/>. It has been enabled by default in <xref target="rpki-client"/> releases since 2023.
       </t>
     </section>
 
-    <section toc="include" anchor="example">
-      <name>Constraints applicable to an Example Trust Anchor</name>
-      <t>
-        If the below content is placed in a file named <strong>example.constraints</strong> next to a Trust Anchor Locator file named <strong>example.tal</strong>, the <xref target="rpki-client"/> implementation will only accept an End-Entity certificate subordinate to <strong>example.tal</strong> if all its resources are fully contained within the resources allowed in <strong>example.constraints</strong>.
+    <section toc="include" anchor="examples">
+      <name>Examples of Registry Policy and Resource Considerations</name>
+      <t anchor="ARIN-policy">
+        The ARIN policy development community abandoned a proposal to allow inter-regional IPv6 resource transfers <xref target="ARIN-2019-4"/>.
+        Since it's currently not possible to transfer IPv6 resources from ARIN to any other RIR, ARIN's IANA-allocated IPv6 resources should not appear subordinate to any Trust Anchor other than ARIN's own Trust Anchor.
       </t>
-      <sourcecode type="text" src="example.constraints"/>
+      <t anchor="APNIC-policy">
+        The APNIC policy development community has not developed <xref target="APNIC-interrir">policy</xref> to support inter-RIR IPv6 transfers.
+      </t>
+      <t anchor="LACNIC-policy">
+        The LACNIC policy development community has not developed <xref target="LACNIC-interrir">policy</xref> to support inter-RIR IPv6 or ASN transfers.
+      </t>
+      <t anchor="RIPE-policy">
+        The RIPE NCC policy development community <em>did</em> develop <xref target="RIPE-interrir">policy</xref> to support inter-RIR IPv6 transfers, but being the <em>only</em> community to have done so, inter-RIR transfers are not possible.
+      </t>
+      <t anchor="AFRINIC-policy">
+        AFRINIC ratified an inter-registry transfer policy <xref target="AFPUB-2020-GEN-006-DRAFT03"/> in February 2026. 
+		The policy does not support inter-RIR IPv6 transfers and stipulates that AFRINIC-issued IPv4 resources cannot be transferred out of the region. 
+		The staff assessment indicates that implementation is expected to take 12 months.
+      </t>
+      <t>
+        The RIRs collectively manage only a subset of 0.0.0.0/0 <xref target="IANA-IPV4"/> and 2000::/3 <xref target="IANA-IPV6"/>; and have no authority over any parts of 10.0.0.0/8 <xref target="RFC1918"/>, 2001:db8::/32 <xref target="RFC3849"/>, and AS 64512 - 65534 <xref target="RFC6996"/>, for example.
+        Since it's not possible to transfer private internet allocations, documentation prefixes, or private use ASNs into an RIR's management, such resources should not appear subordinate to any RIR's Trust Anchor.
+      </t>
+      <t>
+        In recent times IANA has not made allocations from the Current Recovered IPv4 Pool <xref target="IANA-RECOVERED"/>, and Autonomous System Number allocations are also fairly infrequent <xref target="IANA-ASNS"/>.
+      </t>
     </section>
 
    <section anchor="acknowledgements" numbered="false" toc="include">
