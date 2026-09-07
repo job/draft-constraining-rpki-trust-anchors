@@ -20,7 +20,7 @@ deny 2001:db8:: - 2001:db8::ffff # an IPv6 range
 
 # From https://www.iana.org/assignments/as-numbers/
 allow 64496 - 64511
-deny 65123           # carve a hole in the above entry
+deny 64500           # carve a hole in the above entry
 
 allow 65536          # can declare for single ASN
 
