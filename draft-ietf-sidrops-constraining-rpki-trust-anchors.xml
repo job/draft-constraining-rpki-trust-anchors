@@ -266,6 +266,10 @@
 		<reference anchor="panda-rpki" target="https://panda-rpki.cn/">
           <front>
             <title>panda-rpki</title>
+			<author fullname="Yirong Yu"/>
+			<author fullname="Lancheng Qin"/>
+			<author fullname="Yingying Su"/>
+			<author fullname="Xiuting Xu"/>
             <date month="september" year="2026" />
           </front>
         </reference>
