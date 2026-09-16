@@ -1,3 +1,5 @@
+<CODE BEGINS>
+
 # Example constraints following the format described in
 # draft-ietf-sidrops-constraining-rpki-trust-anchors
 
@@ -28,3 +30,5 @@ deny 4200000000 - 4294967294
 
 # There is an implicit deny for all resources which were not
 # explicitly allowed through 'allow' declarations.
+
+<CODE ENDS>

@@ -118,13 +118,13 @@
       </section>
 
       <section anchor="reading">
-        <name>Required Reading</name>
+        <name>Related Reading</name>
         <t>
           Readers should be familiar with the RPKI, the RPKI repository structure, and the various RPKI objects, uses, and interpretations described in the following: <xref target="RFC3779"/>, <xref target="RFC6480"/>, <xref target="RFC6481"/>, <xref target="RFC6487"/>, and <xref target="RFC6488"/>.
         </t>
         <t>
-          A process to construct and sign RPKI Trust Anchor constraints is specified in <xref target="I-D.nro-sidrops-ta-constraints"/>.
-          Such signed distributed constraints can serve as an input to the methodology specified in this document.
+          A process to construct signed RPKI Trust Anchor constraints is specified in <xref target="I-D.nro-sidrops-ta-constraints"/>.
+          Such signed artefacts could serve as an input to the constraining methodology specified in this document.
         </t>
       </section>
 
@@ -166,7 +166,7 @@
         If a given EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing and consider the EE certificate invalid.
       </t>
       <t>
-        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="RFC9582"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, RSCs <xref target="RFC9323"/>, and Geofeeds <xref target="RFC9632"/>.
+        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="RFC9582"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, and RSCs <xref target="RFC9323"/>.
       </t>
       <t>
         The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements); such as Signed TALs <xref target="RFC9691"/>, and Manifests <xref target="RFC9286"/>.
@@ -414,7 +414,6 @@
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9286.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9323.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9582.xml"/>
-        <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9632.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.9691.xml"/>
 
       </references>
