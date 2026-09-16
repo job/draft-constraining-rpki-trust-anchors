@@ -263,7 +263,7 @@
           </front>
         </reference>
         
-		<reference anchor="panda-rpki" target="https://panda-rpki.cn/">
+        <reference anchor="panda-rpki" target="https://panda-rpki.cn/">
           <front>
             <title>panda-rpki</title>
 			<author fullname="Yirong Yu"/>
@@ -393,6 +393,14 @@
           </front>
         </reference>
 
+        <reference anchor="fixtures" target="https://github.com/openbsd/src/tree/master/etc/rpki/">
+          <front>
+            <title>/etc/rpki/*.constraints</title>
+            <author fullname="OpenBSD"/>
+            <date month="september" year="2026"/>
+          </front>
+        </reference>
+
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1918.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3779.xml"/>
         <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3849.xml"/>
@@ -426,8 +434,19 @@
         According to RFC 7942, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature.
         It is up to the individual working groups to use this information as they see fit".
       </t>
+      <ul>
+        <li>
+          The approach specified in this document has been implemented in <xref target="rpki-client"/> in C and has been enabled by default in releases since 2023.
+        </li>
+        <li>
+          The approach was implemented in Rust as part of the <xref target="panda-rpki"/> project.
+        </li>
+        <li>
+          Ben Cartwright-Cox also developed a constraints configuration format parser and EE certificate checker in Go.
+        </li>
+      </ul>
       <t>
-        The approach specified in this document has been implemented in <xref target="rpki-client"/> and <xref target="panda-rpki"/>. It has been enabled by default in <xref target="rpki-client"/> releases since 2023.
+        The above three implementations were tested to produce the same outcomes for the same <xref target="fixtures"/> from the OpenBSD project.
       </t>
     </section>
 
