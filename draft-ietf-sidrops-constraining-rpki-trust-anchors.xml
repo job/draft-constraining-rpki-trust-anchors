@@ -17,7 +17,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="std"
-     docName="draft-ietf-sidrops-constraining-rpki-trust-anchors-02"
+     docName="draft-ietf-sidrops-constraining-rpki-trust-anchors-03"
      ipr="trust200902"
      xml:lang="en"
      sortRefs="true"
@@ -481,7 +481,7 @@
    <section anchor="acknowledgements" numbered="false" toc="include">
      <name>Acknowledgements</name>
      <t>
-       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, Tom Scholl, Erik Bais, Simon Leinen, and Nick Hilliard for their feedback and input.
+       Thanks to Niels Bakker, Joel Jaeggli, Tony Tauber, Tom Scholl, Erik Bais, Simon Leinen, Nick Hilliard, and Jasdip Singh for their feedback and input.
      </t>
    </section>
 

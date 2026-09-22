@@ -7,7 +7,7 @@
 
 allow 10.0.0.0/8      # comments may follow entries
 
-allow 192.168.0.0/12
+allow 192.168.0.0/16
 deny 192.168.1.0/24   # carve a hole in the above entry
 
 allow 192.0.2.0/24
