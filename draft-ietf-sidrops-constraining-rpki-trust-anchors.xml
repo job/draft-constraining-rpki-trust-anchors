@@ -133,24 +133,24 @@
     <section anchor="overclaim">
       <name>Considerations on Trust Anchor over-claiming</name>
       <t>
-        Currently, all five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0, ::/0, and AS 0-4294967295) as subordinate on their Trust Anchor certificates in order to reduce some potential for risk of invalidation in the case of transient registry inconsistencies (see <xref target="I-D.rir-rpki-allres-ta-app-statement"/> for more details).
-        Such 'all-resources' listings demonstrate that - in the course of normal operations - Trust Anchors may claim authority for INRs outside the registry's current resource holdings.
+        At the time of publication all five Regional Internet Registries (RIRs) list 'all-resources' (0.0.0.0/0, ::/0, and AS 0-4294967295) as subordinate on their Trust Anchor certificates in order to reduce some potential for risk of invalidation in the case of transient registry inconsistencies (see <xref target="I-D.rir-rpki-allres-ta-app-statement"/> for more details).
+        Such 'all-resources' listings demonstrate that - in the course of normal operations - Trust Anchors may claim authority for INRs outside the registry's current INR allocation from the Internet Assigned Numbers Authority (IANA).
       </t>
       <t>
         The primary reason for transient registry inconsistencies to occur would be when resources are transferred from one registry to another.
         However, the ability to transfer resources between registries is not universally available: this ability depends on the implementation of registry-specific consensus-driven policy development reciprocated by other registries.
-        Another source of churn would be the inflow of new resources following allocations made by the IANA; but because of IPv4 address exhaustion, IPv6 abundance, and 32-bit AS numbers being allocated in large blocks - IANA allocations occur far less often than they used to.
+        Another source of transient registry inconsistency would be the inflow of new resources following allocations made by the IANA; but because of IPv4 address exhaustion, IPv6 abundance, and 32-bit AS numbers being allocated in large blocks - IANA allocations occur far less often than they used to.
       </t>
       <t>
-        Absent a registry's ability to execute inter-registry transfers or frequently receive new allocations from IANA, that registry's set of holdings would be a fairly static list of resources.
+        Absent a registry's ability to execute inter-registry transfers or frequently receive new allocations from IANA, that registry's set of allocated INRs is an infrequently changed list of resources.
       </t>
       <t>
-        Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor, even when the Trust Anchor certificate lists 'all-resources' as subordinate.
-        Following the widely deployed information security principle of <xref target="PRIVSEP">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to just that what relates to the their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
+        Therefore, a Relying Party need not trust each and every signed product in a derived trust relationship to any and all INRs subordinate to the registry's Trust Anchor, even when the Trust Anchor certificate explicitely lists 'all-resources' as subordinate.
+        Following the widely deployed information security principle of <xref target="PRIVSEP">least privilege</xref>, constraining a given Trust Anchor's capacity strictly to only their respective current INR holdings, provides some degree of risk reduction for all stakeholders involved.
       </t>
       <t>
-        Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term future; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
-        The principle of constraining Trust Anchors might be useful when for example working with RPKI testbeds <xref target="OTE"/>, risky Trust Anchors which cover unallocated space with AS0 ROAs <xref target="AS0TAL"/>, but also in dealings with publicly-trusted registries.
+        Consequently, knowing a registry's current resource holdings and knowing this set of holdings will not change in the near-term; following the principle of least privilege, operators can consider applying a restricted-service operating mode towards what otherwise would be an unbounded authority.
+        The principle of constraining Trust Anchors might be useful when for example working with RPKI testbeds <xref target="OTE"/>, risky Trust Anchors which cover unallocated space with AS0 ROAs <xref target="AS0TAL"/>, and when validating objects from publicly-trusted registries.
       </t>
     </section>
 
@@ -166,7 +166,7 @@
         If a given EE certificate's listed resources are not fully contained within the Constraints, the RP should halt processing of the signed object at hand and considers the EE certificate invalid.
       </t>
       <t>
-        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="RFC9582"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/>, and RSCs <xref target="RFC9323"/>.
+        The above described approach applies to all RPKI objects for which an explicit listing of resources is mandated in their respective <xref target="RFC3779"/> extensions; such as BGPSec Router Certificates <xref target="RFC8209"/>, ROAs <xref target="RFC9582"/>, ASPAs <xref target="I-D.ietf-sidrops-aspa-profile"/> customerASID, and RSCs <xref target="RFC9323"/>.
       </t>
       <t>
         The approach has no application in context of Signed Objects unrelated to INRs (which thus use 'inherit' elements), for example, Signed TALs <xref target="RFC9691"/> and Manifests <xref target="RFC9286"/>.
