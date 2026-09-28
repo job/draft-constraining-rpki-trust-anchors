@@ -3,6 +3,8 @@
 # Example constraints following the format described in
 # draft-ietf-sidrops-constraining-rpki-trust-anchors
 
+thisupdate 1790605435  # Mon Sep 28 14:23:55 UTC 2026
+
 # This is a comment
 
 allow 10.0.0.0/8      # comments may follow entries
