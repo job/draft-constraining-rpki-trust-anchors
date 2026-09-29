@@ -57,6 +57,7 @@
       <organization>Zhongguancun Laboratory</organization>
       <address>
         <postal>
+		  <city>Beijing</city>
           <country>CN</country>
         </postal>
         <email>qinlc@mail.zgclab.edu.cn</email>
@@ -183,6 +184,8 @@
       </t>
 	  <t>
    		The constraints configuration format is line-oriented.
+		A constraints file contains one <strong>thisupdate</strong> directive.
+		The directive consists of the <strong>thisupdate</strong> keyword followed by a Unix timestamp indicating when the constraints file was last verified to be up to date.
 		Comments can be put anywhere in the file using a hash mark ('#') and extend to the end of the current line.
   		Each non-empty, non-comment line contains exactly one constraint entry.
   		Each constraint entry begins with either the <strong>allow</strong> or <strong>deny</strong> keyword, followed by the resource to which the entry applies.
@@ -198,7 +201,7 @@
 	  <sourcecode type="text" src="example.constraints"/>
 	  <t>
 		The RP must consider any deviation from the constraints configuration format specified above to be an error.
-		If a constraints file contains an error, the RP must reject the entire constraints file and must not check EE certificates against it.
+		If a constraints file contains an error or the <strong>thisupdate</strong> timestamp is more than one year in the past relative to the RP's current time, the RP must reject the entire constraints file and must not check EE certificates against it.
 	  </t>
 	  <t>
  		The following rules also apply to constraints entries:
@@ -223,8 +226,12 @@
       </t>
       <t>
         While there are sound reasons to declare 'all resources' as subordinate (<xref target="I-D.rir-rpki-allres-ta-app-statement"/>), there are resources which would never be subordinate to any particular Regional Internet Registry in the normal course of operations.
-        Maintainers of configuration files containing constraints distributed as part of an operating system or a third-party software package release process would do well to assume a six month delay for users to update.
       </t>
+	  <t>
+		Constraints based on a registry's current resource holdings can become outdated as those holdings change.
+		Maintainers should update the <strong>thisupdate</strong> timestamp whenever the contents of a constraints file are reviewed and updated to reflect the current state.
+		Maintainers of configuration files containing constraints distributed as part of an operating system or a third-party software package release process would do well to assume a six month delay for users to update.
+	  </t>
     </section>
 
     <section anchor="security">
@@ -234,6 +241,10 @@
         Assuming such trust exposes users to some potential for <xref target="risks"/> and adverse actions by Certificate Authorities <xref target="RFC8211"/>.
         Restricting a Trust Anchor's effective signing abilities to its respective registry's current holdings - rather assuming unbounded trust in such authorities - is a constructive approach to limit some potential for risk.
       </t>
+	  <t>
+		Outdated constraints may incorrectly exclude resources that have legitimately become subordinate to a Trust Anchor.
+		The expiration behavior specified in <xref target="configformat"/> reduces the risk of stale constraints remaining effective indefinitely.
+	  </t>
     </section>
 
     <section anchor="iana">
